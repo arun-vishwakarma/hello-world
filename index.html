@@ -1,12 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>Welcome to Bhagyawati's online makeup training and course</title>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <title>SMART-App</title>
+
+  <link rel='stylesheet' type='text/css' href='./css/example-smart-app.css'>
+  <!--
+      Temporarily disable cerner-smart-embeddable-lib
+      <link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+    -->
 </head>
+
 <body>
+  <div id='errors'>
+  </div>
+  <div id="loading" class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+  <div id='holder'>
+    <h2>Example-SMART-App</h2>
 
-<h1>This is Bhagyawati</h1>
-<p>Bhagyawati is one of the best beuty professional in the world</p>
+    <h2>Patient Resource</h2>
+    <table>
+      <tr>
+        <th>First Name:</th>
+        <td id='fname'></td>
+      </tr>
+      <tr>
+        <th>Last Name:</th>
+        <td id='lname'></td>
+      </tr>
+      <tr>
+        <th>Gender:</th>
+        <td id='gender'></td>
+      </tr>
+      <tr>
+        <th>Date of Birth:</th>
+        <td id='birthdate'></td>
+      </tr>
+      <tr>
+        <th>Patient ID</th>
+        <td id='patientId'></td>
+      </tr>
+    </table>
+    <h2>Observation Resource</h2>
+    <table>
+      <tr>
+        <th>Height:</th>
+        <td id='height'></td>
+      </tr>
+      <tr>
+        <th>Systolic Blood Pressure:</th>
+        <td id='systolicbp'></td>
 
+      </tr>
+      <tr>
+        <th>Diastolic Blood Pressure:</th>
+        <td id='diastolicbp'></td>
+      </tr>
+      <tr>
+        <th>LDL:</th>
+        <td id='ldl'></td>
+      </tr>
+      <tr>
+        <th>HDL:</th>
+        <td id='hdl'></td>
+      </tr>
+    </table>
+  </div>
+  <!-- Required JS files to enable this page to embed within an MPage -->
+  <!--
+      Temporarily disable cerner-smart-embeddable-lib
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
+      <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
+    -->
+
+  <!-- Application-level javascript-->
+  <script src='./js/smart-app.js'></script>
+
+  <!-- FHIR Client JS Library -->
+  <script src='./js/fhir-client-v0.1.12.js'></script>
+
+  <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
+  <!-- https://github.com/cerner/fhir-client-cerner-additions -->
+  <script src='./js/fhir-client-cerner-additions-1.0.0.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    extractData().then(
+      //Display Patient Demographics and Observations if extractData was success
+      function (p) {
+
+        console.log('>>>>>>>>><<<<<<<<<<<<<');
+        console.log(p);
+        setCookie('patientObject', JSON.stringify(p) , 24);
+        /* drawVisualization(p);
+        window.localStorage.setItem('patientObject', p);
+        sessionStorage.setItem('test', 1); */
+
+        //console.log(window.location.protocol);return false;
+        //window.location.href = 'http://'+ window.location.hostname + ':8017';
+        //window.location.href = window.location.protocol+'://'+ window.location.hostname + ':8017';
+        //window.location.href = window.location.protocol+'//'+ window.location.hostname + ':4200';
+		
+		window.open(
+			window.location.protocol+'//'+ window.location.hostname + ':4200',
+			"DescriptiveWindowName",
+			"resizable,scrollbars,status"
+		);
+		self.close();
+      },
+
+      //Display 'Failed to call FHIR Service' if extractData failed
+      function () {
+        $('#loading').hide();
+        //console.log('http://'+ window.location.hostname + ':8017');
+        $('#errors').html('<p> Failed to call FHIR Service </p>');
+      }
+    );
+
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  </script>
 </body>
+
 </html>
