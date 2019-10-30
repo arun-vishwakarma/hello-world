@@ -1,0 +1,766 @@
+<div [ngStyle]="{'display': isLoaderOn == true ? 'block' : 'none' }"  class="loaderArea">
+    <div class="spinner-border text-loader"></div>
+  </div>
+<div class="container-fluid">
+    <!-- header section -->
+   <app-header></app-header>   
+    <!-- left pannel section -->
+    <aside id="ama-leftPannel" class="{{leftPannelChange}}">
+      <div class="leftTopNavagation">
+        <div id="nav-icon1" title="Menu" class="{{expandClass}}" [attr.expand]="false" (click)="expandCollaps()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- <a href="index.html" class="leftMenuExpand" data-toggle="tooltip" data-placement="bottom" title="Home page">
+          <i class="fa fa-home"></i>
+        </a> -->
+      </div>
+      <div class="ama-leftTab">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a
+              class="nav-item nav-link active"
+              id="nav-myPatients"
+              data-toggle="tab"
+              href="#myPatients"
+              role="tab"
+              aria-controls="nav-home"
+              aria-selected="true"
+              >Enrolled Patient List</a
+            >
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="myPatients" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="gridTable searchListPatient">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Date of Birth</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-href="patient.html">
+                    <td>Smith</td>
+                    <td>Jack</td>
+                    <td>1980-04-29</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Garcia</td>
+                    <td>James</td>
+                    <td>1990-05-30</td>
+                  </tr>
+                  <tr data-href="patient.html" class="currentPatient">
+                    <td>Peterson</td>
+                    <td>James</td>
+                    <td>{{birthdate}}</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Smith</td>
+                    <td>Michael</td>
+                    <td>1991-05-10</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Smith</td>
+                    <td>David</td>
+                    <td>1985-06-10</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Hernandez</td>
+                    <td>Maria</td>
+                    <td>1983-08-11</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Rodriguez</td>
+                    <td>Maria</td>
+                    <td>1986-06-11</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Rodriguez</td>
+                    <td>Robert</td>
+                    <td>1988-08-11</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Zmuda</td>
+                    <td>Molly</td>
+                    <td>1989-11-11</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Smith</td>
+                    <td>June</td>
+                    <td>1987-10-25</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Garcia</td>
+                    <td>Maria</td>
+                    <td>1980-12-03</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Garcia</td>
+                    <td>Thomas</td>
+                    <td>1981-10-03</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Rodriguez</td>
+                    <td>Elizabeth</td>
+                    <td>1985-08-03</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Smith</td>
+                    <td>Charles</td>
+                    <td>1970-06-03</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Smith</td>
+                    <td>Jack</td>
+                    <td>1980-04-29</td>
+                  </tr>
+                  <tr data-href="patient.html">
+                    <td>Garcia</td>
+                    <td>James</td>
+                    <td>1990-05-30</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="paginationBlock">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- right pannel section -->
+    <form class="form-signin" [formGroup]="filterForm">
+    <div class="row">
+      
+      <div class="{{bodyWrapClass}}">
+
+        <div class="row mainBody">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="patientDetais">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>
+                        Peterson, James &nbsp;|&nbsp; MRN: {{mrn}} &nbsp;|&nbsp; {{age}}yrs M &nbsp;|&nbsp; DOB: {{birthdate}}
+                        <!-- {{lname}}, {{fname}} &nbsp;|&nbsp; MRN: {{mrn}} &nbsp;|&nbsp; {{age}}yrs M &nbsp;|&nbsp; DOB: {{birthdate}} -->
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="{{subHeaderClass}}">
+                <div class="{{subHeaderContent}}">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="patientDetails">
+                        <div class="inch">64"</div>
+                        <div class="heartRate">80</div>
+                        <div class="bpInfo">
+                          <span>135</span>
+                          <span>80</span>
+                          <sup>mmHg</sup>
+                        </div>
+                        <div class="ibsInfo">140.0 lb</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p><b>BP:</b> 135/80 mmHg</p>
+                          <p><b>HR:</b> 80 bmp</p>
+                          <p><b>BMI:</b> 20.5</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <p><b>Primary Insurance:</b> Sinma Life Care</p>
+                      <p><b>Phone Number:</b> (646)-392-4387</p>
+                      <p><b>Language:</b> English</p>
+                    </div>
+                  </div>
+                </div>
+                <div [attr.subHeaderExpand]="false" (click)="subHeaderToggleAction();" class="{{subHeaderToggle}}" data-toggle="tooltip" data-placement="bottom" title="Additional information">
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="ama-tableSection">
+              <div class="filterTrends">
+                <ul>
+                  <li>
+                    Observation <br />
+                    Count: <b>{{observationCount}}</b>
+                  </li>
+                  <li class="goalBP">
+                    <div class="form-inline">
+                      <label class="my-1 mr-2">Goal BP:</label>
+                      <div class="inputArea">
+
+                        <div class="input-group spinner">
+                            <input style="color: red;background-color: #fff;" readonly type="text" formControlName="goal_sbp" class="form-control" #goalsbp  value="{{goal_sbp_value}}">
+                         
+                            
+                            <div class="input-group-btn-vertical">
+                                <button (click)="increaseSbpGoal(goalsbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                <button (click)="decreaseSbpGoal(goalsbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                              </div>
+                        </div>
+                      </div>
+                      <div class="slash">
+                        /
+                      </div>
+                      <div class="inputArea">
+                        <div class="input-group spinner">
+                            <input style="color: red;background-color: #fff;" readonly type="text" formControlName="goal_dbp" class="form-control red" #goaldbp  value="{{goal_dbp_value}}">
+                            <div class="input-group-btn-vertical">
+                                <button (click)="increaseDbpGoal(goaldbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                <button (click)="decreaseDbpGoal(goaldbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>{{minDate | date: 'MMMM d': timezoneConstant}} - <br />{{maxDate | date: 'MMMM d': timezoneConstant}} ({{dateRange}} Days)</li>
+                </ul>
+              </div>
+
+              <ul class="nav nav-tabs moniTab" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    (click)="showTable();"
+                    class="{{tableButtonClass}}"
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="javascript:void(0)"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="false"
+                    title="Table View"
+                  >
+                    <span class="iLign"><i class="fa fa-table"></i></span
+                  ></a>
+                </li>
+                <li class="nav-item">
+                  <a #graphRef
+                  (click)="showGraph();"
+                    class="{{graphButtonClass}}"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="javascript:void(0)"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                    title="Graph View"
+                  >
+                    <span><i class="fa fa-area-chart"></i></span
+                  ></a>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="myTabContent" [ngClass]="{'graph-tab': isGraphShow == true}">
+                  <div [ngStyle]="{'display': isGraphShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="graph-view" role="tabpanel" aria-labelledby="profile-tab">
+                      <div id="container" style="border:1px solid black;"></div>
+                  </div>
+                <div [ngStyle]="{'display': isTableShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="table-view" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="table-responsive gridTable">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col" width="10%">Date</th>
+                              <th scope="col" width="6%">Day</th>
+                              <th scope="col" width="10%">Time</th>
+                              <th scope="col" width="10%">SBP / DBP</th>
+                              <th scope="col" width="10%">Heart Rate</th>
+                              <th scope="col" width="34%" class="text-center" >Weekly Average SBP / DBP </th>
+                              <th scope="col" width="10%">Comment</th>
+                              <th scope="col" width="10%">Device</th>
+                            </tr>
+                          </thead>
+                          <tbody >
+                            <tr *ngFor="let data of bpColumnRangeData;index as i">
+                              <td>{{data['timeInMilliSeconds'] | date: 'yyyy-MM-dd': timezoneConstant}}</td>
+                              <td>{{data['timeInMilliSeconds'] | date: 'EEE': timezoneConstant}}</td>
+            
+                              <td *ngIf="data['sbpValue'] == null || data['sbpValue'] == '' "></td>
+                              <td *ngIf="data['sbpValue']  != null &&  data['sbpValue']  != '' ">
+                                {{data['timeInMilliSeconds'] | date: 'hh:mm a' : timezoneConstant}} 
+                              </td>
+                            <!-- ({{data['timeZone']}}) -->
+                              <td *ngIf="data['sbpValue'] == null || data['sbpValue'] == '' ">---</td>
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'All' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                                  <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value ? 'red' : 'black' }">{{data['sbpValue']}}</span>
+                                  <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value && data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }"> / </span>
+                                  <span [ngStyle]="{'color':data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }">{{data['dbpValue']}}</span>
+                              </td>
+            
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'Y' && data['isValid'] == 'N' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                              ---	
+                              </td>
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'Y' && data['isValid'] == 'Y' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                                <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value ? 'red' : 'black' }">{{data['sbpValue']}}</span>
+                                <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value && data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }"> / </span>
+                                <span [ngStyle]="{'color':data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }">{{data['dbpValue']}}</span>
+                              </td>
+            
+            
+                              <td *ngIf="data['sbpValue'] == null || data['sbpValue'] == '' ">---</td>
+                              <td *ngIf="validity == 'All' && data['sbpValue']  != null &&  data['sbpValue']  != '' ">{{data['heartRate']}}</td>
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'Y' && data['isValid'] == 'N' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                                ---
+                              </td>
+            
+                              <td *ngIf="validity == 'Y' && data['isValid'] == 'Y' && data['sbpValue']  != null &&  data['sbpValue']  != '' ">{{data['heartRate']}}</td>
+                              
+                              <!-- <td *ngIf="data['rowspan']" [attr.rowspan]="data['rowspan']" [ngStyle]="{'background-color':data['Average'] != 'Inadequate data' && validity == 'Y' ? '#e2e3e5' : '#fff' }"  style="background:#fff; vertical-align:middle;" class="text-center"> -->
+                                <td *ngIf="data['rowspan']" [attr.rowspan]="data['rowspan']" [ngStyle]="{'background-color':data['ihmiStrict'] == 'Y' ? '#e2e3e5' : '#fff' }"  style="background:#fff; vertical-align:middle;" class="text-center">		
+                                <h3 *ngIf="data['Average'] != 'Inadequate data'">
+                                    <span [ngStyle]="{'color':data['AverageSBP'] >= goal_sbp_value ? 'red' : 'black' }">{{data['AverageSBP']}}</span>
+                                    <span [ngStyle]="{'color':data['AverageSBP'] >= goal_sbp_value && data['AverageDBP'] >= goal_dbp_value ? 'red' : 'black' }"> / </span>
+                                    <span [ngStyle]="{'color':data['AverageDBP'] >= goal_dbp_value ? 'red' : 'black' }">{{data['AverageDBP']}}</span>
+                                </h3>
+            
+                                <h3 *ngIf="data['Average'] == 'Inadequate data'">
+                                    
+                                    <!-- <span>Inadequate data</span> -->
+                                    <span>Not enough data to calculate average</span>
+                                </h3>
+                              </td>
+                              <!--<td [attr.rowspan]="0" style="background:#fff; vertical-align:middle;" class="text-center"> <h3>{{data['simpleAverage']}} / {{data['ihmiAverage']}}</h3></td>-->
+                              <td align="center"><span style="display:none" id="patientComment{{i}}">{{data['patientComments']}}</span>
+                                <!-- <a *ngIf="data['patientComments']!='' && data['patientComments'] !=null"  id="{{i}}" ngbPopover="{{data['patientComments']}}" triggers="mouseenter:mouseleave" (click)="showComment(i);" [className] = "" href="javascript:void(0)" data-toggle="popover" title="" data-content="Some content inside the popover"><img src="./assets/images/icon_Comments.png" /></a> -->
+                                <a *ngIf="data['patientComments']!='' && data['patientComments'] !=null"  id="{{i}}"  (click)="showComment(i);" [className] = "" href="javascript:void(0)" data-toggle="popover" title="{{data['patientComments']}}" data-content="Some content inside the popover"><img src="./assets/images/icon_Comments.png" /></a>
+                                &nbsp;&nbsp;&nbsp;</td>
+                              <td>
+                                
+                                <a title="Validated Device List" *ngIf="data['isValidDevice']== 'Y'" (click)="showVDL(i);" [className] = "" href="javascript:void(0)"><img src="./assets/images/icon_bp_machine.png" /></a>
+                                <span style="display:none" id="model{{i}}">{{data.device.model}}</span>
+                                <span style="display:none" id="manufacturer{{i}}">{{data.device.manufacturer}}</span>
+                              </td>
+                            </tr>
+                            
+                             
+                          </tbody>
+                        </table>
+                    </div>
+
+                  <ul class="tableInfoLegend">
+                    <li><i class="info1"></i> Met Clinical Criteria</li>
+                  </ul>
+                </div>
+                <div class="tab-pane fade" id="graph-view" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="graph-area">
+                    <img src="assets/images/graph-img.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+        
+      </div>
+    
+    </div>
+
+    <div class="fourTiles">
+      <div class="row" data-poptab="false">
+
+        <div class="ama-BorderArea">
+        <div class="allGroupRight">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Filters</h2>
+              </div>
+              <div class="col-md-12">
+
+                <div class="filterSection row">
+                  <div class="form-inline">
+                    <div class="form-group">
+                      <label class="col-md-4">Filter By:</label>
+                      <div class="col-md-8">
+                          <select class="form-control" formControlName="date_range" #date_range id="exampleFormControlSelect1" (change)="setDateRange(date_range.value);">
+                              <option value="7">7 Days</option>
+                              <option value="30" selected>30 Days</option>
+                              <option value="60">60 Days</option>
+                              <option value="90">90 Days</option>
+                            </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4">From Date:</label>
+                      <div class="input-group col-md-8">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" disabled />
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-4">To Date:</label>
+                      <div class="input-group col-md-8">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" disabled />
+                        <div class="input-group-append">
+                          <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="filterRadio">
+
+                    <div class="custom-controls-stacked">
+                        <label class="custom-control custom-radio">
+                            <input  formControlName="clinical_criteria" type="radio" class="custom-control-input" checked="" value="1" (click)="setClinicalCriteria('All');">
+                          <span class="custom-control-label">View All</span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input formControlName="clinical_criteria" type="radio" class="custom-control-input" value="2" (click)="setClinicalCriteria('Y');">
+                          <span class="custom-control-label">Met Clinical Criteria</span>
+                        </label>
+                      </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="allGroupRight">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Weekly Average SBP / DBP</h2>
+              </div>
+              <div class="ama-weeklyArea">
+                <div class="col-md-12" *ngFor="let tiles of tilesArr;index as i">
+                  <div class="{{tiles.class_name}}">
+
+                    <div class="row">
+                      <div class="col-sm-6">
+                          <!-- <span *ngIf="tiles.inadequate_data == 'N' ">SBP</span> -->
+                          <!-- <span *ngIf="tiles.inadequate_data == 'N' " class="{{tiles.sbp_class_name}}">{{tiles.sbp}}</span> -->
+                          <span *ngIf="tiles.inadequate_data == 'Y' ">Inadequate data</span>
+                          <span *ngIf="tiles.inadequate_data == 'NA' ">Not available</span>
+                          <!-- <span *ngIf="tiles.inadequate_data == 'N' "></span> -->
+                          <div *ngIf="tiles.inadequate_data == 'N' " class="weekTop">
+                            <span><span class="{{tiles.sbp_class_name}}">{{tiles.sbp}}</span> / <span class="{{tiles.dbp_class_name}}">{{tiles.dbp}}</span></span>
+                          </div>
+                      </div>
+                      <div class="col-sm-6">
+                          <span *ngIf="tiles.isValidDevice == 'Y' && tiles.inadequate_data != 'NA' && tiles.inadequate_data != 'Y'">
+                            <a title="Validated Device List" (click)="showTilesVDL(i);" [className] = "" href="javascript:void(0)">
+                              <img src="assets/images/icon_bp_machine.png" alt=""/>
+                            </a>
+                          </span>
+                          <div class="week">{{tiles.start_date | date: 'MMM d'}} - <span>{{tiles.end_date | date: 'MMM d'}}</span></div>
+                      </div>
+                    </div>
+                    
+                    <!-- <div class="weekTop">
+                        <span *ngIf="tiles.inadequate_data == 'N' ">SBP</span>
+                        <span *ngIf="tiles.inadequate_data == 'N' " class="{{tiles.sbp_class_name}}">{{tiles.sbp}}</span>
+                        <span *ngIf="tiles.inadequate_data == 'Y' ">Inadequate data</span>
+                        <span *ngIf="tiles.inadequate_data == 'NA' ">Not available</span>
+                        <span *ngIf="tiles.inadequate_data == 'N' "></span>
+                    </div>
+                    <div *ngIf="tiles.inadequate_data == 'N' " class="weekBottom">
+                        <span>DBP</span>
+                        <span class="{{tiles.dbp_class_name}}">{{tiles.dbp}}</span>
+                        <span></span>
+                    </div>
+                    <div class="week">{{tiles.start_date | date: 'MMM d'}} - {{tiles.end_date | date: 'MMM d'}}</div>
+                    <div  *ngIf="tiles.isValidDevice == 'Y' && tiles.inadequate_data != 'NA' && tiles.inadequate_data != 'Y'" class="deviceImg">
+                      <a title="Validated Device List" (click)="showTilesVDL(i);" [className] = "" href="javascript:void(0)">
+                        <img src="assets/images/icon_bp_machine.png" alt="">
+                      </a>
+                    </div> -->
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+          <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 weekArea">
+              <div class="row">
+                <h3>Last 4 Weeks Average</h3>
+              </div>
+              <div class="row">
+    
+                <div class="col-xl-6 col-lg-12 col-md-3"  *ngFor="let tiles of tilesArr;index as i">
+                  <div class="{{tiles.class_name}}">
+                    
+                    <div class="weekTop">
+                        <span *ngIf="tiles.inadequate_data == 'N' ">SBP</span>
+                        <span *ngIf="tiles.inadequate_data == 'N' " class="{{tiles.sbp_class_name}}">{{tiles.sbp}}</span>
+                        <span *ngIf="tiles.inadequate_data == 'Y' ">Inadequate data</span>
+                        <span *ngIf="tiles.inadequate_data == 'NA' ">Not available</span>
+                        <span *ngIf="tiles.inadequate_data == 'N' "></span>
+                    </div>
+                    <div *ngIf="tiles.inadequate_data == 'N' " class="weekBottom">
+                        <span>DBP</span>
+                        <span class="{{tiles.dbp_class_name}}">{{tiles.dbp}}</span>
+                        <span></span>
+                    </div>
+                    <div class="week">{{tiles.start_date | date: 'MMM d'}} - {{tiles.end_date | date: 'MMM d'}}</div>
+                    <div  *ngIf="tiles.isValidDevice == 'Y'" class="deviceImg">
+                      <a title="Validated Device List" (click)="showTilesVDL(i);" [className] = "" href="javascript:void(0)">
+                        <!-- <img src="./assets/images/icon_bp_machine.png" /> 
+                        <i style="color:#0da34e" class="fa fa-info-circle"></i>
+                      </a>
+                    </div>
+                    <div class="clearFix"></div>
+                  </div>
+                </div>
+            
+              </div>
+            </div> -->
+        
+        <div class="billingGroup">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Billing  ({{dateRange}} Days)</h2> 
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-7">
+                  <p><b>Device(s) Used:</b></p>
+                </div>
+                <div class="col-md-5">
+                  <p>
+                    <a title="Device(s) Used" (click)="showDevicesUsed();" [className] = "" href="javascript:void(0)">
+                      <img src="assets/images/icon_bp_machine.png" alt=""/>
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-7">
+                  <p><b>Last bill date:</b></p>
+                </div>
+                <div class="col-md-5">
+                  <p>{{lastBilledDate}}</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <p>
+                    <b>Minimum # of appropriately timed readings reviewed: </b>
+                    <span *ngIf="greenTick == true"><i class="fa fa-check-circle colorTick" aria-hidden="true"></i></span>
+                    <span *ngIf="crossTick == true"><i class="fa fa-times-circle colorCancel" aria-hidden="true"></i></span>
+                  </p>
+                </div>
+                <!-- <div class="col-md-5">
+                  <p>
+                    <span *ngIf="greenTick == true"><i class="fa fa-check-circle colorTick" aria-hidden="true"></i></span>
+                    <span *ngIf="crossTick == true"><i class="fa fa-times-circle colorCancel" aria-hidden="true"></i></span>
+                  </p>
+                </div> -->
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <p><b>Average reviewed:</b> {{billingAverage}}</p>
+                </div>
+                <!-- <div class="col-md-5">
+                  <p>{{billingAverage}}</p>
+                </div> -->
+              </div>
+            </div>
+
+            <!-- <div class="col-md-12">
+              <p><b>Device(s) Used: </b>
+                <a title="Device(s) Used" (click)="showDevicesUsed();" [className] = "" href="javascript:void(0)">
+                    <img src="assets/images/icon_bp_machine.png" alt=""/>
+                  </a>
+              </p>
+              <p><b>Last bill date: {{lastBilledDate}}</b></p>
+              <p>
+                <b>Minimum # of appropriately timed readings reviewed: </b>
+                <span *ngIf="greenTick == true"><i class="fa fa-check-circle colorTick" aria-hidden="true"></i></span>
+                <span *ngIf="crossTick == true"><i class="fa fa-times-circle colorCancel" aria-hidden="true"></i></span>
+              </p>              
+              <p><b>Average reviewed:</b> {{billingAverage}}</p>
+            </div> -->
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </form>
+  
+  </div>
+
+  <div class="modal patientModal" id="myModal" [style.display]="showComments == true ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideComment()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">{{patientComment}}
+         
+          </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+  
+      <div class="modal patientModal" id="myModal2" [style.display]="showVDLModal == true ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideVDL()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        
+        <div class="modal-body">
+          <table class="table table-bordered popTable">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Manufacturer</th>
+              </tr>						
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{model}}</td>
+                <td>{{manufacturer}}</td>
+              </tr>	
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+  
+      <div class="modal patientModal" id="myModal3" [style.display]="showTilesVDLModal == true ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideTilesVDL()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+  
+        <div class="modal-body" *ngFor="let vdl of arrModel;index as i;">
+          <div class="table-responsive">
+            <table class="table table-bordered popTable">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Manufacturer</th>
+                </tr>						
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{vdl}}</td>
+                  <td>{{arrManufacturer[i]}}</td>
+                </tr>	
+              </tbody>
+            </table>
+          </div>
+  
+            <!-- <b>Model</b>: {{vdl}}
+            <b>Manufacturer</b>: {{arrManufacturer[i]}}<br/> -->
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+
+
+
+      <div class="modal patientModal" id="myModal3" [style.display]="showDevicesUsedModal == true ? 'block' : 'none'">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="closeBtn">
+              <button type="button" class="close" data-dismiss="modal" (click) = "showDevicesUsedModal=false">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+      
+            <div class="modal-body" *ngFor="let devices of devicesUsedArr;index as i;">
+              <div class="table-responsive">
+                <table class="table table-bordered popTable">
+                  <thead>
+                    <tr>
+                      <th>Model</th>
+                      <th>Manufacturer</th>
+                    </tr>						
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{devices.model}}</td>
+                      <td>{{devices.manufacturer}}</td>
+                    </tr>	
+                  </tbody>
+                </table>
+              </div>
+      
+                <!-- <b>Model</b>: {{vdl}}
+                <b>Manufacturer</b>: {{arrManufacturer[i]}}<br/> -->
+            </div>
+            
+            <!-- Modal footer -->
+            
+            
+            </div>
+          </div>
+          </div>
+    
+
+
+
