@@ -1,0 +1,45 @@
+HTML
+<!--
+      (click)="idx == 3 && autoCall(data)"  //i.e click event happen only for index 3
+      -->
+
+<div>
+  <ul>
+    <li
+      *ngFor="let data of dataArr; let idx = index"
+      (click)="autoCall(data)"
+      [attr.id]="idx == 2 ? 'mainBtn' : null"
+    >
+      <a href="javascript:void(0);">{{ idx }} -- {{ data.name }}</a>
+    </li>
+  </ul>
+</div>
+
+
+
+TS
+<script>
+dataArr = [
+    { id: 1, name: "A" },
+    { id: 2, name: "B" },
+    { id: 3, name: "C" },
+    { id: 4, name: "D" },
+    { id: 5, name: "E" }
+  ];
+  
+  
+   autoCall(dataObj: any = null) {
+    console.log("aaa data..", dataObj);
+  }
+  
+  
+  ngOnInit() {
+    setTimeout(function() {
+      document.getElementById("mainBtn").click();
+      document.getElementById("mainBtn").removeAttribute("id");
+    }, 2500);
+	//....
+ }
+ </script>
+  
+  
