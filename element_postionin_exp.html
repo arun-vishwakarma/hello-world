@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div#mycont {
+  background-color: lightgrey;
+  width: 300px;
+  border: 15px solid green;
+  padding: 0px;
+  margin: 0px;
+}
+#body{
+	position:relative;
+}
+</style>
+</head>
+<body id="body1">
+  <div id="mycont">This text is the content of the box. We have added a 50px padding, 20px margin and a 15px green border. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.	
+</div>
+
+<!-- if element have no parent relative then by default take 8*8 height*width of window-->
+
+<script>
+    var example = document.getElementById('mycont');    
+    var positionInfo = example.getBoundingClientRect();    
+	alert(example.offsetParent.id);  // parent element id
+    alert(example.offsetLeft+'##'+example.offsetTop+'##'+positionInfo.width+'##'+example.offsetWidth); 
+	
+	/**		
+		#offsetLeft/offsetTop  (HTML Element)
+		if element have no parent with relative position then by default take 8*8 height*width of window or 
+		if element have parent with relative position then it will return margin left of the element relative to parent(change margin of #mycont to check), similarly offsetTop
+		i.e. Properties offsetLeft/offsetTop provide x/y coordinates relative to offsetParent upper-left corner.
+		
+		#example.offsetWidth, positionInfo.width (co-ordinates realtive to the window)
+		positionInfo.width or example.offsetWidth (content width + left padding +right padding + left border + right border +  left margin + right margin) => CPBM or MBPC (CSS Box Model)
+		Similarly offsetHeight
+    
+	*/
+	
+	/**
+		#Event handling:  (Mouse Events)
+		pageX/pageY : Relative to the document
+		clientX/clientY : Relative to the window
+		
+		screenX/screenY : Relative to the screen  (window + menubar screen)
+		offsetX/offsetY : Relative to the element (target element or current element)
+		 
+		//event.pageX => event.clientX + scroll width of the scrolled-out horizontal part of the document  
+		//event.pageY => event.clientY + scroll height of the scrolled-out vertical part of the document.
+		
+		Summary:
+		Any point on the page has coordinates:
+
+		1. Relative to the window – elem.getBoundingClientRect().
+		2. Relative to the document – elem.getBoundingClientRect() plus the current page scroll.
+		
+		Window coordinates are great to use with position:fixed, and document coordinates do well with position:absolute.
+		Both coordinate systems have their pros and cons; there are times we need one or the other one, just like CSS position absolute and fixed
+	*/
+	
+	/**
+		#offsetX/offsetY   (Mouse Events)
+		offsetX : Relative to the element
+		The offsetX property returns the x-coordinate of the mouse pointer, relative to the target(i.e element onwhich trigger events like click) element or current element where click event fire. 
+		Tip: To get the y-coordinate, use the offsetY property.
+		Note: This property is read-only.
+	*/
+	
+	
+	/**
+		#clientTop/clientLeft   (HTML Element)
+		The clientTop property returns the width of the top border of an element, in pixels.  (example.clientTop)
+		This property does not include the element's top padding or top margin.
+		Tip: You can also use the style.borderTopWidth property to return the width of an element's top border.
+		Tip: To return the width of the left border of an element, use the clientLeft property.
+	*/
+	
+	/**
+		#clientWidth/clientHeight (HTML Element)
+		clientWidth => content width + left padding + right padding, but no scrollbar width
+		clientHeight => content height + top padding + bottom padding, but no scrollbar height
+		
+		Notes: The clientWidth property returns the viewable width of an element in pixels, including padding, but not the border, scrollbar or margin similarly clientHeight 
+	
+	*/
+	
+	/**
+		#scrollHeight/scrollWidth  (HTML Element)
+		scrollHeight =>  entire height of an element + left padding + right padding, but no scrollbar, no margin and no border
+		//full inner height of the content area including the scrolled out parts (i.e only hidden content area height not the scroll width (bottom scrollbar element) corresponding to height)
+		scrollWidth =>   entire width of an element + top padding + bottom padding, but no scrollbar, no margin and no border
+		
+		Notes: The scrollHeight property returns the entire height of an element in pixels, including padding, but not the border, scrollbar or margin.
+	
+	*/
+	
+	//all above is read only
+	
+	/**
+		#scrollLeft/scrollTop  (HTML Element)
+		scrollLeft =>  scrollbar element (element's content) scroll from top in px and it's read and write both, similarly scrollTop
+		#scrollbar element : means jo scrollbar banata hai jab onerflow scroll lgaya jata hai i.e. apart from content
+		
+		//The scrollLeft property sets or returns the number of pixels an element's content is scrolled horizontally.
+	
+	*/
+	
+	/**
+		#pageXOffset /pageYOffset   (window or document)
+		The pageXOffset and pageYOffset properties returns the pixels the current document (not the element i.e window or document) has been scrolled from the upper left corner of the window, horizontally and vertically.
+		The pageXOffset and pageYOffset properties are equal to the scrollX and scrollY properties.
+		These properties are read-only.
+	
+	*/
+	
+	
+	
+</script>
+
+</body>
+</html>
