@@ -1,0 +1,22 @@
+<div class="content" role="main">
+  Test
+  <!-- Highlight Card -->
+  <div id="cont-area">
+    <p>Data to print</p>
+    <img src="assets/images/LogoAMA.png" />
+  </div>
+
+  <div class="card highlight-card card-small">
+    <button (click)="generatePdf()">Open PDF</button>
+  </div>
+
+  <div #content id="content" style="color:red;margin-left:10%;margin-top:5%;">
+    <img src="assets/images/LogoAMA.png" />
+    <p>
+      Start editing to see some magic happen :)
+    </p>
+  </div>
+
+  <button (click)="captureScreen()">make pdf</button>
+</div>
+<router-outlet></router-outlet>
