@@ -1,0 +1,773 @@
+<html lang="en">
+    <head>
+        <title>Highcharts</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+        <script src="https://code.highcharts.com/modules/boost.js"></script>
+        <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    </head>
+    <body>
+        <div id="container1" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+    </body>
+    <script>
+        var threshholdLower = 85;
+        var threshholdHigher = 135;       
+        /*var data = [[1568525928136, 159, 90, 75, "", "","Y", ""],[1568439528136, 156, 60, 99, "", "","Y", ""],
+        [1568353128136, 148, 67, 95, "", "","Y", ""],[1568345928136, 132, 93, 71, "", "","N", "Body not at rest"],[1568338728136, 142, 99, 77, "", "","Y", ""],[1568266728136, 127, 71, 64, "", "","Y", ""],
+		[1568180328136, 122, 103, 86, "", "","Y", ""],[1568093928136, 142, 92, 82, "", "","N", "Exercised recently"],[1568086728136, 144, 77, 81, "", "","Y", ""],[1568079528136, 139, 74, 69, "", "","Y", ""],
+		[1568007528136, 127, 91, 92, "", "","N", "Caffeine intake during past half an hour"],[1568000328136, 154, 58, 104, "128 / 76", "126 / 71", "Y", ""],[1567921128136, 138, 82, 99, "", "","Y", ""],
+		[1567913928136, 119, 92, 58, "", "","N", "Body not at rest"],[1567906728136, 159, 101, 62, "", "","Y", ""],[1567834728136, 115, 58, 64, "", "","N", "Body not at rest"],
+		[1567827528136, 142, 56, 74, "", "","Y", ""],[1567748328136, 168, 56, 102, "", "","Y", ""],[1567661928136, 115, 98, 93, "", "","N", "Exercised recently"],
+		[1567654728136, 159, 100, 89, "", "","Y", ""],[1567575528136, 136, 85, 101, "", "","Y", ""],[1567489128136, 149, 94, 58, "", "","N", "Body not at rest"],
+		[1567481928136, 133, 100, 85, "", "","Y", ""],[1567474728136, 174, 95, 95, "", "","Y", ""],[1567402728136, 173, 83, 102, "131 / 78", "130 / 73", "Y", ""],
+		[1567316328136, 158, 94, 104, "", "","Y", ""],[1567229928136, 156, 96, 68, "", "","Y", ""],[1567143528136, 122, 71, 92, "", "","Y", ""],[1567136328136, 179, 76, 80, "", "","N", "Body not at rest"],
+		[1567129128136, 116, 73, 60, "", "","Y", ""],[1567057128136, 116, 70, 91, "", "","N", "Body not at rest"],[1567049928136, 137, 58, 71, "", "","Y", ""],[1566970728136, 162, 98, 62, "", "","Y", ""],
+		[1566963528136, 153, 83, 72, "", "","Y", ""],[1566884328136, 154, 61, 84, "", "","Y", ""],[1566877128136, 132, 60, 57, "", "","Y", ""],[1566797928136, 145, 55, 75, "", "","N", "Caffeine intake during past half an hour"],
+		[1566790728136, 115, 103, 98, "133 / 68", "129 / 71", "Y", ""],[1566711528136, 164, 56, 81, "", "","N", "Caffeine intake during past half an hour"],[1566704328136, 167, 87, 104, "", "","Y", ""],
+		[1566625128136, 121, 101, 92, "", "","Y", ""],[1566538728136, 156, 63, 77, "", "","Y", ""],[1566452328136, 118, 66, 94, "", "","Y", ""],[1566365928136, 161, 61, 83, "", "","N", "Exercised recently"],
+		[1566358728136, 165, 70, 85, "", "","Y", ""],[1566279528136, 141, 81, 71, "", "","Y", ""],[1566272328136, 177, 55, 71, "", "","N", "Exercised recently"],[1566265128136, 139, 104, 62, "", "","Y", ""],
+		[1566193128136, 116, 99, 85, "", "","N", "Body not at rest"],[1566185928136, 144, 74, 79, "135 / 70", "128 / 71", "Y", ""],[1566106728136, 119, 100, 72, "", "","N", "Body not at rest"],
+		[1566099528136, 150, 101, 60, "", "","Y", ""],[1566092328136, 172, 74, 65, "", "","Y", ""],[1566020328136, 163, 96, 62, "", "","Y", ""],[1566013128136, 160, 84, 90, "", "","N", "Device not from VDL"],
+		[1566005928136, 130, 59, 71, "", "","Y", ""],[1565933928136, 123, 96, 103, "", "","Y", ""],[1565847528136, 177, 69, 58, "", "","Y", ""],[1565840328136, 122, 82, 86, "", "","N", "Body not at rest"],
+		[1565833128136, 133, 104, 75, "", "","Y", ""],[1565761128136, 156, 90, 71, "", "","Y", ""],[1565753928136, 133, 70, 86, "", "","Y", ""],[1565674728136, 132, 98, 70, "", "","N", "Body not at rest"],
+		[1565667528136, 128, 56, 76, "", "","Y", ""],[1565588328136, 168, 74, 102, "133 / 78", "129 / 72", "Y", ""],[1565501928136, 123, 102, 68, "", "","N", "Caffeine intake during past half an hour"],
+		[1565494728136, 149, 70, 55, "", "","N", "Body not at rest"],[1565487528136, 125, 99, 102, "", "","Y", ""],[1565415528136, 155, 86, 75, "", "","N", "Exercised recently"],[1565408328136, 140, 74, 56, "", "","Y", ""],
+		[1565329128136, 119, 63, 87, "", "","Y", ""],[1565242728136, 164, 75, 103, "", "","Y", ""],[1565156328136, 131, 65, 84, "", "","N", "Device not from VDL"],[1565149128136, 150, 63, 94, "", "","N", "Body not at rest"],
+		[1565141928136, 168, 72, 60, "", "","Y", ""],[1565069928136, 165, 74, 89, "", "","Y", ""],[1565062728136, 163, 81, 75, "", "","Y", ""],[1564983528136, 127, 93, 89, "", "","Y", ""],
+		[1564976328136, 132, 69, 103, "134 / 72", "129 / 71", "Y", ""],[1564897128136, 158, 65, 95, "", "","Y", ""],[1564889928136, 144, 74, 70, "", "","Y", ""],
+		[1564810728136, 118, 78, 77, "", "","N", "Caffeine intake during past half an hour"],[1564803528136, 156, 86, 85, "", "","Y", ""],[1564724328136, 148, 66, 101, "", "","Y", ""],
+		[1564637928136, 155, 61, 96, "", "","Y", ""],[1564630728136, 138, 62, 74, "", "","Y", ""],[1564623528136, 178, 86, 65, "", "","Y", ""],[1564551528136, 147, 58, 96, "", "","Y", ""],
+		[1564465128136, 140, 83, 77, "", "","Y", ""],[1564378728136, 116, 74, 59, "", "","Y", ""],[1564371528136, 165, 59, 103, "", "","Y", ""],[1564364328136, 140, 97, 77, "135 / 65", "131 / 70", "Y", ""],
+		[1564292328136, 122, 70, 86, "", "","Y", ""],[1564205928136, 115, 68, 103, "", "","Y", ""],[1564198728136, 123, 68, 60, "", "","N", "Device not from VDL"],[1564191528136, 126, 81, 61, "", "","Y", ""],
+		[1564119528136, 145, 62, 72, "", "","N", "Device not from VDL"],[1564112328136, 167, 62, 102, "", "","Y", ""],[1564105128136, 149, 58, 62, "", "","Y", ""],[1564033128136, 120, 96, 79, "", "","Y", ""],
+		[1564025928136, 162, 60, 87, "", "","N", "Body not at rest"],[1564018728136, 164, 91, 69, "", "","Y", ""],[1563946728136, 116, 57, 97, "", "","Y", ""],[1563939528136, 165, 100, 70, "", "","Y", ""],
+		[1563860328136, 133, 79, 91, "", "","N", "Body not at rest"],[1563853128136, 157, 79, 101, "", "","Y", ""],[1563773928136, 177, 102, 57, "130 / 68", "130 / 70", "Y", ""],[1563687528136, 123, 77, 95, "", "","Y", ""],
+		[1563601128136, 115, 60, 89, "", "","Y", ""],[1563593928136, 148, 94, 95, "", "","Y", ""],[1563514728136, 179, 71, 61, "", "","Y", ""],[1563507528136, 118, 67, 90, "", "","N", "Device not from VDL"],
+		[1563500328136, 143, 95, 84, "", "","Y", ""],[1563428328136, 115, 59, 75, "", "","Y", ""],[1563421128136, 129, 76, 70, "", "","N", "Caffeine intake during past half an hour"],[1563413928136, 173, 92, 84, "", "","Y", ""],
+		[1563341928136, 170, 65, 84, "", "","Y", ""],[1563255528136, 135, 74, 71, "", "","N", "Body not at rest"],[1563248328136, 129, 83, 62, "", "","Y", ""],[1563169128136, 140, 83, 100, "129 / 70", "130 / 70", "Y", ""],
+		[1563082728136, 162, 75, 59, "", "","Y", ""],[1563075528136, 122, 66, 103, "", "","N", "Body not at rest"],[1563068328136, 174, 88, 86, "", "","Y", ""],[1562996328136, 160, 78, 89, "", "","Y", ""],
+		[1562989128136, 139, 93, 99, "", "","Y", ""],[1562909928136, 132, 82, 94, "", "","N", "Caffeine intake during past half an hour"],[1562902728136, 161, 91, 70, "", "","Y", ""],[1562895528136, 158, 78, 96, "", "","Y", ""],
+		[1562823528136, 177, 78, 102, "", "","Y", ""],[1562816328136, 144, 62, 63, "", "","Y", ""],[1562809128136, 172, 80, 76, "", "","Y", ""],[1562737128136, 176, 55, 77, "", "","N", "Body not at rest"],
+		[1562729928136, 176, 68, 94, "", "","Y", ""],[1562650728136, 129, 92, 74, "", "","Y", ""],[1562564328136, 129, 85, 66, "", "","N", "Body not at rest"],[1562557128136, 166, 93, 97, "", "","Y", ""],
+		[1562549928136, 173, 60, 62, "145 / 74", "132 / 70", "Y", ""],[1562477928136, 131, 60, 96, "", "","N", "Caffeine intake during past half an hour"],[1562470728136, 176, 64, 70, "", "","Y", ""],
+		[1562463528136, 149, 55, 63, "", "","Y", ""],[1562391528136, 166, 60, 97, "", "","Y", ""],[1562305128136, 170, 91, 57, "", "","N", "Caffeine intake during past half an hour"],
+		[1562297928136, 142, 96, 96, "","N", "Exercised recently"],[1562290728136, 161, 57, 67, "", "","Y", ""],[1562218728136, 119, 55, 76, "", "","N", "Body not at rest"],
+		[1562211528136, 155, 68, 55, "", "","N", "Caffeine intake during past half an hour"],[1562204328136, 137, 55, 69, "", "","Y", ""],[1562132328136, 179, 102, 90, "", "","N", "Caffeine intake during past half an hour"],
+		[1562125128136, 118, 55, 88, "", "","Y", ""],[1562117928136, 152, 56, 59, "", "","Y", ""],[1562045928136, 132, 65, 103, "", "","N", "Device not from VDL"],[1562038728136, 126, 88, 102, "", "","Y", ""],
+		[1562031528136, 123, 85, 58, "", "","Y", ""],[1561959528136, 129, 88, 68, "", "","N", "Body not at rest"],[1561952328136, 129, 93, 104, "", "","Y", ""],[1561945128136, 121, 93, 93, "136 / 68", "132 / 69", "Y", ""],
+		[1561873128136, 154, 63, 96, "", "","Y", ""],[1561786728136, 130, 73, 91, "", "","N", "Device not from VDL"],[1561779528136, 137, 85, 83, "", "","N", "Device not from VDL"],[1561772328136, 141, 101, 104, "", "","Y", ""],
+		[1561700328136, 134, 86, 86, "", "","Y", ""],[1561613928136, 176, 89, 72, "", "","Y", ""],[1561527528136, 116, 75, 64, "", "","N", "Caffeine intake during past half an hour"],
+		[1561520328136, 145, 102, 72, "", "","Y", ""],[1561441128136, 119, 65, 101, "", "","Y", ""],[1561433928136, 172, 96, 90, "", "","N", "Device not from VDL"],[1561426728136, 165, 73, 69, "", "","Y", ""],
+		[1561354728136, 156, 92, 88, "", "","N", "Device not from VDL"],[1561347528136, 165, 72, 93, "134 / 76", "132 / 70", "Y", ""],[1561268328136, 125, 87, 77, "", "","Y", ""],[1561181928136, 173, 83, 91, "", "","Y", ""],
+		[1561174728136, 135, 70, 93, "", "","Y", ""],[1561095528136, 154, 70, 65, "", "","N", "Exercised recently"],[1561088328136, 175, 85, 89, "", "","Y", ""],[1561009128136, 135, 92, 96, "", "","N", "Device not from VDL"],
+		[1561001928136, 137, 82, 85, "", "","N", "Exercised recently"],[1560994728136, 127, 82, 102, "", "","Y", ""],[1560922728136, 122, 65, 98, "", "","N", "Device not from VDL"],[1560915528136, 122, 73, 70, "", "","Y", ""],
+		[1560836328136, 132, 57, 61, "", "","Y", ""],[1560829128136, 143, 74, 80, "", "","N", "Caffeine intake during past half an hour"],[1560821928136, 146, 104, 59, "", "","Y", ""],
+		[1560749928136, 168, 68, 74, "130 / 73", "131 / 70", "Y", ""],[1560663528136, 123, 58, 77, "", "","N", "Exercised recently"],[1560656328136, 176, 71, 85, "", "","Y", ""],[1560577128136, 127, 90, 82, "", "","Y", ""],
+		[1560569928136, 170, 62, 82, "", "","Y", ""],[1560490728136, 152, 89, 79, "", "","Y", ""],[1560483528136, 146, 73, 75, "", "","Y", ""],[1560476328136, 120, 87, 79, "", "","Y", ""],
+		[1560404328136, 141, 65, 89, "", "","N", "Body not at rest"],[1560397128136, 134, 59, 75, "", "","N", "Device not from VDL"],[1560389928136, 152, 84, 65, "", "","Y", ""],[1560317928136, 159, 84, 77, "", "","Y", ""],
+		[1560310728136, 139, 70, 104, "", "","Y", ""],[1560231528136, 132, 103, 76, "", "","Y", ""],[1560224328136, 158, 60, 57, "", "","Y", ""],[1560217128136, 157, 93, 67, "", "","Y", ""],
+		[1560145128136, 148, 83, 79, "", "","N", "Exercised recently"],[1560137928136, 126, 98, 63, "", "","Y", ""],[1560130728136, 127, 58, 88, "136 / 73", "132 / 70", "Y", ""],
+		[1560058728136, 148, 84, 93, "", "","N", "Exercised recently"],[1560051528136, 135, 98, 90, "", "","Y", ""],[1560044328136, 163, 100, 80, "", "","Y", ""],[1559972328136, 159, 100, 77, "", "","Y", ""],
+		[1559885928136, 172, 81, 83, "", "","N", "Caffeine intake during past half an hour"],[1559878728136, 163, 59, 59, "", "","Y", ""],[1559799528136, 119, 62, 100, "", "","Y", ""],
+		[1559792328136, 155, 64, 104, "", "","N", "Exercised recently"],[1559785128136, 152, 73, 82, "", "","Y", ""],[1559713128136, 169, 73, 69, "", "","N", "Exercised recently"],[1559705928136, 171, 57, 79, "", "","Y", ""],
+		[1559626728136, 123, 103, 66, "", "","Y", ""],[1559619528136, 178, 97, 80, "", "","Y", ""],[1559540328136, 137, 93, 64, "", "","Y", ""],[1559533128136, 149, 58, 59, "142 / 76", "132 / 71", "Y", ""],
+		[1559453928136, 158, 61, 95, "", "","Y", ""],[1559446728136, 136, 61, 65, "", "","Y", ""],[1559367528136, 177, 95, 80, "", "","N", "Device not from VDL"],[1559360328136, 160, 83, 74, "", "","N", "Body not at rest"],
+		[1559353128136, 153, 68, 65, "", "","Y", ""],[1559281128136, 122, 58, 73, "", "","Y", ""],[1559194728136, 132, 63, 77, "", "","N", "Body not at rest"],[1559187528136, 137, 103, 61, "", "","Y", ""],
+		[1559108328136, 129, 68, 96, "", "","Y", ""],[1559101128136, 125, 57, 88, "", "","N", "Exercised recently"],[1559093928136, 155, 82, 61, "", "","Y", ""],[1559021928136, 171, 97, 61, "", "","Y", ""],
+		[1558935528136, 140, 102, 86, "", "","Y", ""],[1558928328136, 131, 94, 77, "135 / 71", "132 / 71", "Y", ""],[1558849128136, 144, 59, 102, "", "","Y", ""],[1558841928136, 143, 91, 72, "", "","Y", ""],
+		[1558762728136, 130, 87, 61, "", "","N", "Exercised recently"],[1558755528136, 156, 99, 92, "", "","N", "Caffeine intake during past half an hour"],[1558748328136, 136, 70, 89, "", "","Y", ""],
+		[1558676328136, 130, 93, 79, "", "","N", "Caffeine intake during past half an hour"],[1558669128136, 172, 95, 71, "", "","Y", ""],[1558661928136, 176, 61, 72, "", "","Y", ""],[1558589928136, 137, 99, 78, "", "","Y", ""],
+		[1558582728136, 159, 58, 87, "", "","Y", ""],[1558503528136, 164, 79, 61, "", "","Y", ""],[1558496328136, 138, 99, 94, "", "","Y", ""],[1558417128136, 141, 57, 75, "", "","Y", ""],
+		[1558409928136, 153, 81, 89, "", "","Y", ""],[1558402728136, 175, 87, 82, "", "","Y", ""],[1558330728136, 116, 70, 68, "", "","N", "Device not from VDL"],[1558323528136, 146, 104, 89, "139 / 75", "133 / 71", "Y", ""],
+		[1558244328136, 147, 68, 68, "", "","Y", ""],[1558157928136, 160, 88, 89, "", "","Y", ""],[1558150728136, 168, 89, 57, "", "","Y", ""],[1558071528136, 126, 86, 69, "", "","Y", ""],
+		[1558064328136, 118, 83, 100, "", "","Y", ""],[1558057128136, 148, 55, 58, "", "","Y", ""],[1557985128136, 179, 70, 58, "", "","Y", ""],[1557898728136, 156, 103, 72, "", "","N", "Device not from VDL"],
+		[1557891528136, 147, 75, 89, "", "","Y", ""],[1557812328136, 121, 75, 89, "", "","N", "Caffeine intake during past half an hour"],[1557805128136, 145, 60, 69, "", "","Y", ""],
+		[1557725928136, 157, 85, 100, "", "","N", "Exercised recently"],[1557718728136, 119, 77, 83, "136 / 72", "133 / 70", "Y", ""],[1557639528136, 122, 61, 73, "", "","N", "Exercised recently"],
+		[1557632328136, 120, 80, 78, "", "","Y", ""],[1557625128136, 116, 97, 74, "", "","Y", ""],[1557553128136, 140, 55, 96, "", "","Y", ""],[1557466728136, 168, 61, 66, "", "","Y", ""],
+		[1557380328136, 131, 66, 101, "", "","Y", ""],[1557293928136, 140, 64, 96, "", "","Y", ""],[1557207528136, 165, 81, 92, "", "","Y", ""],[1557200328136, 132, 100, 101, "", "","Y", ""],
+		[1557193128136, 176, 66, 62, "", "","Y", ""],[1557121128136, 153, 88, 62, "", "","Y", ""],[1557113928136, 140, 102, 91, "", "","N", "Body not at rest"],[1557106728136, 174, 94, 58, "131 / 70", "133 / 70", "Y", ""],
+		[1557034728136, 130, 68, 80, "", "","N", "Exercised recently"],[1557027528136, 130, 68, 87, "", "","Y", ""],[1557020328136, 122, 67, 74, "", "","Y", ""],[1556948328136, 167, 96, 64, "", "","N", "Body not at rest"],[1556941128136, 133, 82, 93, "", "","N", "Body not at rest"],[1556933928136, 146, 57, 82, "", "","Y", ""],[1556861928136, 135, 75, 101, "", "","Y", ""],[1556854728136, 125, 84, 104, "", "","Y", ""],[1556775528136, 154, 101, 71, "", "","Y", ""],[1556689128136, 122, 100, 91, "", "","Y", ""],[1556602728136, 116, 94, 65, "", "","Y", ""],[1556516328136, 121, 85, 61, "123 / 74", "132 / 70", "Y", ""],[1556429928136, 139, 55, 98, "", "","N", "Caffeine intake during past half an hour"],[1556422728136, 120, 92, 95, "", "","Y", ""],[1556415528136, 164, 72, 88, "", "","Y", ""],[1556343528136, 141, 80, 66, "", "","N", "Caffeine intake during past half an hour"],[1556336328136, 153, 95, 92, "", "","Y", ""],[1556257128136, 177, 104, 69, "", "","Y", ""],[1556249928136, 174, 60, 60, "", "","N", "Exercised recently"],[1556242728136, 117, 69, 63, "", "","Y", ""],[1556170728136, 146, 83, 64, "", "","Y", ""],[1556084328136, 130, 56, 67, "", "","N", "Exercised recently"],[1556077128136, 136, 87, 62, "", "","Y", ""],[1555997928136, 143, 88, 59, "", "","Y", ""],[1555990728136, 162, 60, 96, "", "","N", "Exercised recently"],[1555983528136, 153, 89, 62, "", "","Y", ""],[1555911528136, 132, 77, 77, "", "","Y", ""],[1555904328136, 130, 95, 64, "136 / 72", "132 / 71", "Y", ""],[1555825128136, 161, 94, 65, "", "","N", "Body not at rest"],[1555817928136, 170, 87, 87, "", "","Y", ""],[1555738728136, 125, 95, 79, "", "","Y", ""],[1555652328136, 135, 72, 65, "", "","N", "Body not at rest"],[1555645128136, 164, 95, 85, "", "","N", "Exercised recently"],[1555637928136, 174, 98, 69, "", "","Y", ""],[1555565928136, 173, 98, 56, "", "","N", "Exercised recently"],[1555558728136, 165, 64, 66, "", "","Y", ""],[1555551528136, 165, 85, 87, "", "","Y", ""],[1555479528136, 115, 104, 73, "", "","Y", ""],[1555393128136, 179, 76, 92, "", "","Y", ""],[1555385928136, 127, 95, 98, "", "","N", "Body not at rest"],[1555378728136, 120, 78, 87, "", "","Y", ""],[1555306728136, 122, 66, 66, "", "","Y", ""],[1555299528136, 141, 69, 97, "", "","N", "Body not at rest"],[1555292328136, 130, 80, 57, "139 / 79", "132 / 71", "Y", ""],[1555220328136, 154, 86, 58, "", "","Y", ""],[1555213128136, 170, 57, 99, "", "","Y", ""],[1555205928136, 172, 63, 89, "", "","Y", ""],[1555133928136, 148, 77, 101, "", "","N", "Device not from VDL"],[1555126728136, 162, 55, 70, "", "","Y", ""],[1555119528136, 171, 74, 97, "", "","Y", ""],[1555047528136, 177, 61, 87, "", "","N", "Device not from VDL"],[1555040328136, 124, 73, 56, "", "","N", "Device not from VDL"],[1555033128136, 129, 81, 61, "", "","Y", ""],[1554961128136, 131, 83, 103, "", "","Y", ""],[1554953928136, 176, 67, 79, "", "","Y", ""],[1554874728136, 171, 58, 88, "", "","N", "Exercised recently"],[1554867528136, 141, 58, 83, "", "","N", "Exercised recently"],[1554860328136, 116, 59, 57, "", "","Y", ""],[1554788328136, 160, 62, 81, "", "","N", "Device not from VDL"],[1554781128136, 131, 69, 78, "", "","N", "Exercised recently"],[1554773928136, 136, 93, 102, "", "","Y", ""],[1554701928136, 123, 56, 84, "", "","Y", ""],[1554694728136, 116, 64, 67, "", "","Y", ""],[1554687528136, 176, 75, 99, "140 / 64", "132 / 71", "Y", ""],[1554615528136, 125, 95, 72, "", "","N", "Device not from VDL"],[1554608328136, 168, 99, 77, "", "","N", "Caffeine intake during past half an hour"],[1554601128136, 127, 55, 86, "", "","Y", ""],[1554529128136, 176, 68, 75, "", "","Y", ""],[1554442728136, 117, 58, 102, "", "","Y", ""],[1554356328136, 144, 103, 92, "", "","Y", ""],[1554349128136, 167, 85, 97, "", "","Y", ""],[1554269928136, 146, 91, 57, "", "","Y", ""],[1554183528136, 134, 103, 68, "", "","N", "Device not from VDL"],[1554176328136, 156, 61, 58, "", "","Y", ""],[1554097128136, 163, 91, 55, "132 / 74", "132 / 70", "Y", ""],[1554010728136, 141, 71, 56, "", "","N", "Body not at rest"],[1554003528136, 137, 59, 92, "", "","Y", ""],[1553924328136, 153, 102, 60, "", "","N", "Exercised recently"],[1553917128136, 170, 88, 96, "", "","Y", ""],[1553837928136, 160, 87, 88, "", "","Y", ""],[1553830728136, 172, 58, 101, "", "","Y", ""],[1553751528136, 120, 94, 64, "", "","Y", ""],[1553665128136, 170, 94, 58, "", "","Y", ""],[1553657928136, 152, 93, 56, "", "","Y", ""],[1553650728136, 177, 97, 65, "", "","Y", ""],[1553578728136, 116, 99, 91, "", "","N", "Device not from VDL"],[1553571528136, 168, 96, 59, "", "","N", "Exercised recently"],[1553564328136, 149, 58, 87, "", "","Y", ""],[1553492328136, 153, 58, 74, "", "","Y", ""],[1553485128136, 123, 57, 97, "142 / 76", "132 / 70", "Y", ""],[1553405928136, 132, 67, 75, "", "","Y", ""],[1553319528136, 138, 78, 64, "", "","Y", ""],[1553312328136, 138, 92, 80, "", "","Y", ""],[1553233128136, 145, 60, 65, "", "","N", "Device not from VDL"],[1553225928136, 171, 97, 85, "", "","Y", ""],[1553146728136, 150, 97, 93, "", "","Y", ""],[1553139528136, 153, 82, 73, "", "","N", "Device not from VDL"],[1553132328136, 177, 97, 68, "", "","Y", ""],[1553060328136, 122, 91, 67, "", "","Y", ""],
+        [1553053128136, 173, 59, 83, "", "","N", "Caffeine intake during past half an hour"],[1553045928136, 124, 84, 82, "", "","Y", ""]];
+			
+		
+        data = data.reverse();
+		
+		*/
+		
+		/*
+		//actual data
+		var data = [{"timeInMilliSeconds":"1556735400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-02","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1556821800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-03","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1556908200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-04","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1556994600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-05","timeZone":null,"isValidDevice":"N","device":null,"rowspan":4,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1557081000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-06","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557167400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-07","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557253800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-08","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557340200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-09","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557426600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-10","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557513000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-11","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557599400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-12","timeZone":null,"isValidDevice":"N","device":null,"rowspan":7,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1557685800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-13","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557772200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-14","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557858600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-15","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557945000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-16","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558031400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-17","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558117800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-18","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558204200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-19","timeZone":null,"isValidDevice":"N","device":null,"rowspan":7,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1558290600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-20","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558377000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-21","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558492200000","sbpValue":"150","dbpValue":"93","heartRate":"108","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558492399000","sbpValue":"146","dbpValue":"89","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558522260000","sbpValue":"138","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558522461000","sbpValue":"138","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558578600000","sbpValue":"145","dbpValue":"85","heartRate":"108","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558578765000","sbpValue":"139","dbpValue":"81","heartRate":"106","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558612920000","sbpValue":"149","dbpValue":"93","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558613079000","sbpValue":"147","dbpValue":"92","heartRate":"92","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558665000000","sbpValue":"148","dbpValue":"97","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558665092000","sbpValue":"137","dbpValue":"91","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558699860000","sbpValue":"137","dbpValue":"84","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558700023000","sbpValue":"134","dbpValue":"81","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558751400000","sbpValue":"120","dbpValue":"85","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558751614000","sbpValue":"120","dbpValue":"85","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558784280000","sbpValue":"147","dbpValue":"85","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558784372000","sbpValue":"146","dbpValue":"80","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558837800000","sbpValue":"138","dbpValue":"97","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558837939000","sbpValue":"128","dbpValue":"93","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558869420000","sbpValue":"150","dbpValue":"91","heartRate":"98","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558869590000","sbpValue":"142","dbpValue":"89","heartRate":"97","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"140/88","AverageSBP":"140","AverageDBP":"88","ihmiStrict":"Y"},{"timeInMilliSeconds":"1558895400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-27","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558981800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-28","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559097000000","sbpValue":"128","dbpValue":"91","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559097196000","sbpValue":"123","dbpValue":"88","heartRate":"93","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559129280000","sbpValue":"133","dbpValue":"91","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559129493000","sbpValue":"123","dbpValue":"84","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559183400000","sbpValue":"148","dbpValue":"86","heartRate":"93","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559183537000","sbpValue":"140","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559213280000","sbpValue":"136","dbpValue":"87","heartRate":"118","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559213527000","sbpValue":"127","dbpValue":"85","heartRate":"117","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559269800000","sbpValue":"130","dbpValue":"94","heartRate":"109","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559269885000","sbpValue":"127","dbpValue":"87","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559305560000","sbpValue":"135","dbpValue":"85","heartRate":"107","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559305747000","sbpValue":"133","dbpValue":"82","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559356200000","sbpValue":"135","dbpValue":"96","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559356468000","sbpValue":"132","dbpValue":"91","heartRate":"98","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559388360000","sbpValue":"133","dbpValue":"86","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559388561000","sbpValue":"123","dbpValue":"83","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559442600000","sbpValue":"147","dbpValue":"95","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559442745000","sbpValue":"137","dbpValue":"91","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559472720000","sbpValue":"132","dbpValue":"97","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559472893000","sbpValue":"131","dbpValue":"87","heartRate":"110","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"133/89","AverageSBP":"133","AverageDBP":"89","ihmiStrict":"Y"},{"timeInMilliSeconds":"1559500200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-03","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559586600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-04","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559701800000","sbpValue":"138","dbpValue":"85","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559701912000","sbpValue":"136","dbpValue":"84","heartRate":"97","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559734800000","sbpValue":"151","dbpValue":"94","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559734973000","sbpValue":"148","dbpValue":"88","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559788200000","sbpValue":"135","dbpValue":"86","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559788260000","sbpValue":"130","dbpValue":"80","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559817000000","sbpValue":"123","dbpValue":"82","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559817118000","sbpValue":"123","dbpValue":"82","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559874600000","sbpValue":"154","dbpValue":"95","heartRate":"114","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559874802000","sbpValue":"145","dbpValue":"88","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559907480000","sbpValue":"131","dbpValue":"96","heartRate":"114","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559907602000","sbpValue":"123","dbpValue":"95","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559961000000","sbpValue":"157","dbpValue":"95","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559961117000","sbpValue":"153","dbpValue":"85","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559991180000","sbpValue":"152","dbpValue":"87","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559991383000","sbpValue":"150","dbpValue":"80","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560047400000","sbpValue":"126","dbpValue":"83","heartRate":"115","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560047514000","sbpValue":"124","dbpValue":"82","heartRate":"106","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560078780000","sbpValue":"130","dbpValue":"83","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560078907000","sbpValue":"127","dbpValue":"80","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"140/88","AverageSBP":"140","AverageDBP":"88","ihmiStrict":"Y"},{"timeInMilliSeconds":"1560105000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-10","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1560191400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-11","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1560709800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-17","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1560796200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-18","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1561314600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-24","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1561401000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-25","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"}];
+		*/
+		
+		
+		/*
+		//current scenerio with extra time 1568525928136
+		var data = [{"timeInMilliSeconds":"1568525928136","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-02","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1556821800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-03","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1556908200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-04","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1556994600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-05","timeZone":null,"isValidDevice":"N","device":null,"rowspan":4,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1557081000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-06","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557167400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-07","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557253800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-08","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557340200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-09","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557426600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-10","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557513000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-11","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557599400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-12","timeZone":null,"isValidDevice":"N","device":null,"rowspan":7,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1557685800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-13","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557772200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-14","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557858600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-15","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557945000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-16","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558031400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-17","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558117800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-18","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558204200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-19","timeZone":null,"isValidDevice":"N","device":null,"rowspan":7,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1558290600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-20","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558377000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-21","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558492200000","sbpValue":"150","dbpValue":"93","heartRate":"108","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558492399000","sbpValue":"146","dbpValue":"89","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558522260000","sbpValue":"138","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558522461000","sbpValue":"138","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558578600000","sbpValue":"145","dbpValue":"85","heartRate":"108","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558578765000","sbpValue":"139","dbpValue":"81","heartRate":"106","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558612920000","sbpValue":"149","dbpValue":"93","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558613079000","sbpValue":"147","dbpValue":"92","heartRate":"92","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558665000000","sbpValue":"148","dbpValue":"97","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558665092000","sbpValue":"137","dbpValue":"91","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558699860000","sbpValue":"137","dbpValue":"84","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558700023000","sbpValue":"134","dbpValue":"81","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558751400000","sbpValue":"120","dbpValue":"85","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558751614000","sbpValue":"120","dbpValue":"85","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558784280000","sbpValue":"147","dbpValue":"85","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558784372000","sbpValue":"146","dbpValue":"80","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558837800000","sbpValue":"138","dbpValue":"97","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558837939000","sbpValue":"128","dbpValue":"93","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558869420000","sbpValue":"150","dbpValue":"91","heartRate":"98","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558869590000","sbpValue":"142","dbpValue":"89","heartRate":"97","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"140/88","AverageSBP":"140","AverageDBP":"88","ihmiStrict":"Y"},{"timeInMilliSeconds":"1558895400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-27","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558981800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-28","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559097000000","sbpValue":"128","dbpValue":"91","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559097196000","sbpValue":"123","dbpValue":"88","heartRate":"93","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559129280000","sbpValue":"133","dbpValue":"91","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559129493000","sbpValue":"123","dbpValue":"84","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559183400000","sbpValue":"148","dbpValue":"86","heartRate":"93","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559183537000","sbpValue":"140","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559213280000","sbpValue":"136","dbpValue":"87","heartRate":"118","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559213527000","sbpValue":"127","dbpValue":"85","heartRate":"117","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559269800000","sbpValue":"130","dbpValue":"94","heartRate":"109","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559269885000","sbpValue":"127","dbpValue":"87","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559305560000","sbpValue":"135","dbpValue":"85","heartRate":"107","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559305747000","sbpValue":"133","dbpValue":"82","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559356200000","sbpValue":"135","dbpValue":"96","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559356468000","sbpValue":"132","dbpValue":"91","heartRate":"98","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559388360000","sbpValue":"133","dbpValue":"86","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559388561000","sbpValue":"123","dbpValue":"83","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559442600000","sbpValue":"147","dbpValue":"95","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559442745000","sbpValue":"137","dbpValue":"91","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559472720000","sbpValue":"132","dbpValue":"97","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559472893000","sbpValue":"131","dbpValue":"87","heartRate":"110","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"133/89","AverageSBP":"133","AverageDBP":"89","ihmiStrict":"Y"},{"timeInMilliSeconds":"1559500200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-03","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559586600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-04","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559701800000","sbpValue":"138","dbpValue":"85","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559701912000","sbpValue":"136","dbpValue":"84","heartRate":"97","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559734800000","sbpValue":"151","dbpValue":"94","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559734973000","sbpValue":"148","dbpValue":"88","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559788200000","sbpValue":"135","dbpValue":"86","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559788260000","sbpValue":"130","dbpValue":"80","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559817000000","sbpValue":"123","dbpValue":"82","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559817118000","sbpValue":"123","dbpValue":"82","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559874600000","sbpValue":"154","dbpValue":"95","heartRate":"114","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559874802000","sbpValue":"145","dbpValue":"88","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559907480000","sbpValue":"131","dbpValue":"96","heartRate":"114","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559907602000","sbpValue":"123","dbpValue":"95","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559961000000","sbpValue":"157","dbpValue":"95","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559961117000","sbpValue":"153","dbpValue":"85","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559991180000","sbpValue":"152","dbpValue":"87","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559991383000","sbpValue":"150","dbpValue":"80","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560047400000","sbpValue":"126","dbpValue":"83","heartRate":"115","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560047514000","sbpValue":"124","dbpValue":"82","heartRate":"106","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560078780000","sbpValue":"130","dbpValue":"83","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560078907000","sbpValue":"127","dbpValue":"80","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"140/88","AverageSBP":"140","AverageDBP":"88","ihmiStrict":"Y"},{"timeInMilliSeconds":"1560105000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-10","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1560191400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-11","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1560709800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-17","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1560796200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-18","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1561314600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-24","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1561401000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-25","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"}];
+		*/
+		
+		
+		//testing data  (push "timeInMilliSeconds":"1568525928136" data to set scroll left side at x-axis)
+		var data = [
+		{"timeInMilliSeconds":"1556735400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-02","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1556821800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-03","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1556908200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-04","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1556994600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-05","timeZone":null,"isValidDevice":"N","device":null,"rowspan":4,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1557081000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-06","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557167400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-07","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557253800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-08","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557340200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-09","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557426600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-10","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557513000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-11","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557599400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-12","timeZone":null,"isValidDevice":"N","device":null,"rowspan":7,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1557685800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-13","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557772200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-14","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557858600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-15","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1557945000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-16","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558031400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-17","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558117800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-18","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558204200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-19","timeZone":null,"isValidDevice":"N","device":null,"rowspan":7,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1558290600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-20","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558377000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-21","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558492200000","sbpValue":"150","dbpValue":"93","heartRate":"108","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558492399000","sbpValue":"146","dbpValue":"89","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558522260000","sbpValue":"138","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558522461000","sbpValue":"138","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-22","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558578600000","sbpValue":"145","dbpValue":"85","heartRate":"108","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558578765000","sbpValue":"139","dbpValue":"81","heartRate":"106","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558612920000","sbpValue":"149","dbpValue":"93","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558613079000","sbpValue":"147","dbpValue":"92","heartRate":"92","isValid":"Y","patientComments":"Need Care","date":"2019-05-23","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558665000000","sbpValue":"148","dbpValue":"97","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558665092000","sbpValue":"137","dbpValue":"91","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558699860000","sbpValue":"137","dbpValue":"84","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558700023000","sbpValue":"134","dbpValue":"81","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-05-24","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558751400000","sbpValue":"120","dbpValue":"85","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558751614000","sbpValue":"120","dbpValue":"85","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558784280000","sbpValue":"147","dbpValue":"85","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558784372000","sbpValue":"146","dbpValue":"80","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-05-25","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558837800000","sbpValue":"138","dbpValue":"97","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},
+		{"timeInMilliSeconds":"1558837939000","sbpValue":"128","dbpValue":"93","heartRate":"105","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558869420000","sbpValue":"150","dbpValue":"91","heartRate":"98","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1558869590000","sbpValue":"142","dbpValue":"89","heartRate":"97","isValid":"Y","patientComments":"Need Care","date":"2019-05-26","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"140/88","AverageSBP":"140","AverageDBP":"88","ihmiStrict":"Y"},{"timeInMilliSeconds":"1558895400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-27","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1558981800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-05-28","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1559097000000","sbpValue":"128","dbpValue":"91","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559097196000","sbpValue":"123","dbpValue":"88","heartRate":"93","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559129280000","sbpValue":"133","dbpValue":"91","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559129493000","sbpValue":"123","dbpValue":"84","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-29","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559183400000","sbpValue":"148","dbpValue":"86","heartRate":"93","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559183537000","sbpValue":"140","dbpValue":"85","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559213280000","sbpValue":"136","dbpValue":"87","heartRate":"118","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559213527000","sbpValue":"127","dbpValue":"85","heartRate":"117","isValid":"Y","patientComments":"Need Care","date":"2019-05-30","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559269800000","sbpValue":"130","dbpValue":"94","heartRate":"109","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559269885000","sbpValue":"127","dbpValue":"87","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559305560000","sbpValue":"135","dbpValue":"85","heartRate":"107","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559305747000","sbpValue":"133","dbpValue":"82","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-05-31","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559356200000","sbpValue":"135","dbpValue":"96","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559356468000","sbpValue":"132","dbpValue":"91","heartRate":"98","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559388360000","sbpValue":"133","dbpValue":"86","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559388561000","sbpValue":"123","dbpValue":"83","heartRate":"99","isValid":"Y","patientComments":"Need Care","date":"2019-06-01","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559442600000","sbpValue":"147","dbpValue":"95","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559442745000","sbpValue":"137","dbpValue":"91","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559472720000","sbpValue":"132","dbpValue":"97","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559472893000","sbpValue":"131","dbpValue":"87","heartRate":"110","isValid":"Y","patientComments":"Need Care","date":"2019-06-02","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"133/89","AverageSBP":"133","AverageDBP":"89","ihmiStrict":"Y"},{"timeInMilliSeconds":"1559500200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-03","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559586600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-04","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1559701800000","sbpValue":"138","dbpValue":"85","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559701912000","sbpValue":"136","dbpValue":"84","heartRate":"97","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559734800000","sbpValue":"151","dbpValue":"94","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559734973000","sbpValue":"148","dbpValue":"88","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-05","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559788200000","sbpValue":"135","dbpValue":"86","heartRate":"96","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559788260000","sbpValue":"130","dbpValue":"80","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559817000000","sbpValue":"123","dbpValue":"82","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559817118000","sbpValue":"123","dbpValue":"82","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-06","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559874600000","sbpValue":"154","dbpValue":"95","heartRate":"114","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559874802000","sbpValue":"145","dbpValue":"88","heartRate":"112","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559907480000","sbpValue":"131","dbpValue":"96","heartRate":"114","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559907602000","sbpValue":"123","dbpValue":"95","heartRate":"104","isValid":"Y","patientComments":"Need Care","date":"2019-06-07","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559961000000","sbpValue":"157","dbpValue":"95","heartRate":"95","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559961117000","sbpValue":"153","dbpValue":"85","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559991180000","sbpValue":"152","dbpValue":"87","heartRate":"101","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1559991383000","sbpValue":"150","dbpValue":"80","heartRate":"90","isValid":"Y","patientComments":"Need Care","date":"2019-06-08","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560047400000","sbpValue":"126","dbpValue":"83","heartRate":"115","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560047514000","sbpValue":"124","dbpValue":"82","heartRate":"106","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560078780000","sbpValue":"130","dbpValue":"83","heartRate":"100","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."}},{"timeInMilliSeconds":"1560078907000","sbpValue":"127","dbpValue":"80","heartRate":"94","isValid":"Y","patientComments":"Need Care","date":"2019-06-09","timeZone":"EDT","isValidDevice":"Y","device":{"model":"BP765CAN-CD6","manufacturer":"Omron Healthcare, Inc."},"rowspan":22,"Average":"140/88","AverageSBP":"140","AverageDBP":"88","ihmiStrict":"Y"},{"timeInMilliSeconds":"1560105000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-10","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1560191400000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-11","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1560709800000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-17","timeZone":null,"isValidDevice":"N","device":null},{"timeInMilliSeconds":"1560796200000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-18","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},{"timeInMilliSeconds":"1561314600000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-24","timeZone":null,"isValidDevice":"N","device":null},
+		{"timeInMilliSeconds":"1561401000000","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"2019-06-25","timeZone":null,"isValidDevice":"N","device":null,"rowspan":2,"Average":"Inadequate data","AverageSBP":"","AverageDBP":"","ihmiStrict":"N"},
+		{"timeInMilliSeconds":"1568525928136","sbpValue":"99","dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"","timeZone":null,"isValidDevice":"N","device":null},//may be exists data on same datetime i.e added to test
+		{"timeInMilliSeconds":"1568525928136","sbpValue":null,"dbpValue":null,"heartRate":null,"isValid":null,"patientComments":"","date":"","timeZone":null,"isValidDevice":"N","device":null}//extra  (always extra)
+		];
+		
+		
+        var xchart; 
+        var y3 = new Array(data.length);
+        var y4 = new Array(data.length);
+        var arrflag = new Array();
+        var arrflagDBP = new Array();
+        var arrflagNotMet = new Array();
+        var arrflagNotMetDBP = new Array();
+        var heartrate = new Array();
+        var category = new Array();
+        var annotationLabels = new Array();
+        var plotLinesArray = new Array();
+        var min;
+        var max;
+        var k =0;
+        var kk =0;
+        var d2;
+		/*for (var i = 0;  i < data.length; i ++) {
+			var val = data[i];
+			if(i == 0){
+				min =  parseInt(val[0]);
+			}
+			if(i == data.length-1){
+				var d= new Date(parseInt(val[0]));
+				var d1 = new Date(d.getFullYear(), d.getMonth(), d.getDate()+1);
+				max =  d1.getTime();
+			}
+			var sbp = new Array(2);
+			sbp[0] = parseInt(val[0]);
+			sbp[1] = parseInt(val[1]);
+			var dbp = new Array(2);
+			dbp[0] = parseInt(val[0]);
+			dbp[1] = parseInt(val[2]);
+			var hr = new Array(2);
+			hr[0] = parseInt(val[0]);
+			hr[1] = parseInt(val[3]);
+			heartrate[i] = hr;
+			y3[i] = sbp;
+			y4[i] = dbp;  
+			if(val[6] == 'Y'){
+				arrflag[k] = {x: parseInt(val[0]),y: parseInt(val[1]), title: ' ', text: ' '};
+				arrflagDBP[k] = {x: parseInt(val[0]),y: parseInt(val[2]), title: ' ', text: ' '};
+				k++;
+			}else{
+				plotLinesArray[kk] = {color: 'red',width: 1, value : parseInt(val[0])};
+				annotationLabels[kk] = {point: {xAxis: 0, yAxis: 0, x: parseInt(val[0]),y: 210}, text :'Not met'};
+				arrflagNotMet[kk] = {x: parseInt(val[0]),y: parseInt(val[1]), title: ' ', text: ' '};
+				arrflagNotMetDBP[kk] = {x: parseInt(val[0]),y: parseInt(val[2]), title: ' ', text: ' '};
+				kk++;
+			}		
+		} */
+        
+		
+		for (var i = 0;  i < data.length; i ++) {
+			var val = data[i];
+			if(i == 0){
+				min =  parseInt(val.timeInMilliSeconds);
+			}
+			if(i == data.length-1){  //resolved scroll issue
+				console.log('here',val.timeInMilliSeconds);
+				var d= new Date(parseInt(val.timeInMilliSeconds));
+				var d1 = new Date(d.getFullYear(), d.getMonth(), d.getDate()+1);
+				max =  d1.getTime();
+			}
+			var sbp = new Array(2);
+			sbp[0] = parseInt(val.timeInMilliSeconds);
+			sbp[1] = parseInt(val.sbpValue);
+			var dbp = new Array(2);
+			dbp[0] = parseInt(val.timeInMilliSeconds);
+			dbp[1] = parseInt(val.dbpValue);
+			var hr = new Array(2);
+			hr[0] = parseInt(val.timeInMilliSeconds);
+			hr[1] = parseInt(val.heartRate);
+			heartrate[i] = hr;
+			y3[i] = sbp;
+			y4[i] = dbp;  
+			if(val[6] == 'Y'){
+				arrflag[k] = {x: parseInt(val.timeInMilliSeconds),y: parseInt(val.sbpValue), title: ' ', text: ' '};
+				arrflagDBP[k] = {x: parseInt(val.timeInMilliSeconds),y: parseInt(val.sbpValue), title: ' ', text: ' '};
+				k++;
+			}else{
+				plotLinesArray[kk] = {color: 'red',width: 1, value : parseInt(val.timeInMilliSeconds)};
+				annotationLabels[kk] = {point: {xAxis: 0, yAxis: 0, x: parseInt(val.timeInMilliSeconds),y: 210}, text :'Not met'};
+				arrflagNotMet[kk] = {x: parseInt(val.timeInMilliSeconds),y: parseInt(val.sbpValue), title: ' ', text: ' '};
+				arrflagNotMetDBP[kk] = {x: parseInt(val.timeInMilliSeconds),y: parseInt(val.dbpValue), title: ' ', text: ' '};
+				kk++;
+			}		
+		}
+		
+		
+		console.log('arrflagNotMetDBP:1',arrflagNotMetDBP);
+		
+		console.log('min-max',min,'-',max);
+	
+		//Remove text zoom
+		Highcharts.setOptions({
+        	lang:{
+            	rangeSelectorZoom: ''
+            }
+        });
+        
+		var options1 = {
+		   title:{
+			  text:'BP Observations'
+		   },
+		   subtitle:{
+			  text:''
+		   },
+		   credits:{
+			  enabled:false
+		   },
+		   /*mapNavigation:{
+			  enabled:true,
+			  enableDoubleClickZoom:true
+		   },*/
+		   xAxis:{
+			  type:'datetime',
+			  lineColor:'grey',
+			  lineWidth:1,
+			  tickInterval:1000 * 3600 * 12,
+			  //tickPixelInterval:5,
+			  min:min,
+			  max:max,
+			  uniqueNames:false,
+			  minorGridLineColor:'#C5EEFA',
+			  minorGridLineWidth:.3,
+			  //plotLines:plotLinesArray,
+			  endOnTick:true,
+			  showLastLabel:true,
+			  startOnTick:true,
+			  minorTickInterval:'auto',
+			  labels:{
+				 enabled:true,
+				 format:'{value:%Y-%m-%d}',
+				 useHTML:true,
+				 formatter:function (){				
+					var hours = Highcharts.dateFormat('%H', this.value);
+					if(hours == '00'){
+									return Highcharts.dateFormat('%Y-%m-%d', this.value);
+					}
+					if(hours == '12'){
+									return "";
+					}					
+				 },
+				 rotation:-90,
+				 style:{
+					color:'grey',
+					fontWeight:'bold'
+				 },
+			  }
+		   },
+		    scrollbar:{
+			  enabled:true
+		    },
+			exporting:{
+			  menuItemDefinitions:{
+				 fullscreen:{
+					onclick:function(){
+					   Highcharts.FullScreen.prototype.init(this.renderTo);
+					},
+					text:'Full screen'
+				 }
+			  },
+			  sourceWidth:1200,
+			  sourceHeight:600,
+			  buttons:{
+				 contextButton:{
+					menuItems:[
+					   "fullscreen",
+					   "printChart",
+					   "separator",
+					   "downloadPNG",
+					   "downloadJPEG",
+					   "downloadPDF"
+					]
+				 }
+			  }
+		   },
+		   rangeSelector:{
+			  enabled:true,			  
+			  inputEnabled:false,			  
+			  allButtonsEnabled:false,
+			  buttons: [
+				{
+				  type: "all",
+				  approximation: "averages",
+				  dataGrouping: {
+					enabled: false
+				  },
+				  text: ""
+				},
+				{
+				  type: "day",
+				  approximation: "averages",
+				  count: parseInt(30),
+				  dataGrouping: {
+					enabled: false,					
+				  },
+				  text: ""
+				}
+			  ],
+			  selected:1
+		   },
+		   yAxis:[
+			  {
+				 labels:{
+					format:'{value} mmHg',
+					style:{
+					   color:'grey'
+					},
+
+				 },
+				 height:'70%',
+				 resize:{
+					enabled:true
+				 },
+				 minRange:40,
+				 maxRange:220,
+				 opposite:false,
+				 lineColor:'grey',
+				 lineWidth:1,
+				 tickInterval:20,
+				 min:40,
+				 gridLineColor:'transparent',
+				 max:220,
+				 title:{
+					text:''
+				 },
+				 plotLines:[
+					{
+					   color:'lightgrey',
+					   width:2,
+					   dashStyle:'longdash',
+					   value:threshholdLower,
+					   label:{
+						  //text:'DBP threshhold ('                  +threshholdLower+                  ')',
+						  align:'center',
+						  style:{
+							 color:'gray'
+						  }
+					   }
+					},
+					{
+					   color:'lightgrey',
+					   width:2,
+					   dashStyle:'longdash',
+					   value:threshholdHigher,
+					   label:{
+						  //text:'SBP threshhold ('                  +threshholdHigher+                  ')',
+						  align:'center',
+						  style:{
+							 color:'gray'
+						  }
+					   }
+					}
+				 ]
+			  },
+			  {
+				 labels:{
+					format:'{value} BPM',
+					style:{
+					   color:'grey'
+					},
+
+				 },
+				 opposite:true,
+				 min:0,
+				 lineColor:'grey',
+				 lineWidth:1,
+				 top:'75%',
+				 height:'25%',
+				 offset:0,
+				 tickInterval:40,
+				 min:40,
+				 gridLineColor:'transparent',
+				 max:120,
+				 title:{
+					text:''
+				 }
+			  }
+		   ],
+		   plotOptions:{
+			  line:{
+				 dataLabels:{
+					enabled:false
+				 },
+				 enableMouseTracking:true
+			  },
+			  series:{
+				 dataLabels:{
+					enabled:false
+				 },
+				 point:{
+					events:{
+					   click:function(){
+						  var e = !this.dataLabels || !this.dataLabels.enabled ? true:false;
+				
+											this.update({
+							 dataLabels:{
+								enabled:e
+							 }
+						  }                  );
+					   }
+					}
+				 }
+			  }
+		   },
+		   tooltip:{
+			  pointFormat:'<br/><span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> <br/>',
+			  shared:true,
+			  xDateFormat:'<b>%Y-%m-%d %H:%M</b>',
+			  valueDecimals:0,
+			  crosshairs:{
+				 color:'grey',
+				 dashStyle:'solid'
+			  },
+			  lineWidth:.1,
+			  valueSuffix:' mmHg'
+		   },
+		   ////
+				
+							   
+				
+			legend:{
+			  //useHTML:true,
+			  labelFormatter:function(){
+				 if(this.name==         "Not met clinical criteria"         ){
+					// this.legendSymbol.destroy();
+				
+								 return            '<div style="width:200px;"><span style="float:right;padding:9px">Not met clinical criteria, beyond goal</span></div>'            ;
+				 }         if(this.name==         "Not met clinical criteria SBP"         ){
+					// this.legendSymbol.destroy();
+				
+								 return            '<div style="width:200px;"><span style="float:right;padding:9px">Not met clinical criteria, within goal</span></div>'            ;
+				 }         if(this.name==         "Met clinical criteria"         ){
+					return            '<div style="width:200px;"><span style="float:right;padding:9px">SBP/DBP beyond goal</span></div>'            ;
+				 }         if(this.name==         "Met clinical criteria SBP"         ){
+					return            '<div style="width:200px;"><span style="float:right;padding:9px">SBP/DBP within goal</span></div>'            ;
+				 }         if(this.name==         "Heart Rate"         ){
+					return            '<div style="width:200px;"><span style="float:right;padding:9px">Heart Rate</span></div>'            ;
+				 }
+			  }
+		   },
+		   ////
+				
+			series:[
+			  {
+				 //0
+				name:'SBP',
+				 data:y3,
+				 id:'seriesSbp',
+				 color:'red',
+				 lineWidth:1,
+				 showInLegend:false,
+				 events:{
+					legendItemClick:function(){
+					   return false;
+					}            // disable legend click
+				 },
+				 dashStyle:'LongDashDotDot',
+				 tooltip:{
+					pointFormat:'<br/><span style="color:{point.color}">{series.name}</span>: <span style="color:{point.color}">{point.y}</span> <br/>',
+
+				 },
+				 marker:{
+					enabled:false
+				 },
+				 states:{
+					hover:{
+					   lineWidthPlus:1
+					}
+				 },
+				 zones:[
+					{
+					   value:135,
+					   color:'#505050'
+					},
+					{
+					   color:'red'
+					}
+				 ]
+			  },
+			  {
+				 //1				
+				name:'DBP',
+				 data:y4,
+				 id:'dbp',
+				 lineWidth:1,
+				 color:'black',
+				 dashStyle:'LongDashDotDot',
+				 showInLegend:false,
+				 events:{
+					legendItemClick:function(){
+					   return false;
+					}
+				 },
+				 tooltip:{
+					pointFormat:'<br/><span style="color:{point.color}">{series.name}</span>: <span style="color:{point.color}">{point.y}</span><br/>',
+
+				 },
+				 marker:{
+					enabled:false
+				 },
+				 states:{
+					hover:{
+					   lineWidthPlus:1
+					}
+				 },
+				 zones:[
+					{
+					   value:threshholdLower,
+					   color:'#505050'
+					},
+					{
+					   color:'red'
+					}
+				 ]
+			  },
+			  {
+				//2				
+				name:'Not met clinical criteria',
+				 lineWidth:0,
+				 data:arrflagNotMetDBP,
+				 id:'akv',
+				 showInLegend:true,
+				 events:{
+					legendItemClick:function(){
+					   return false;
+					}
+				 },
+				 enableMouseTracking:true,
+				 onSeries:'dbp',
+				 color:'red',
+				 states:{
+					hover:{
+					   lineWidthPlus:0
+					},
+					inactive:{
+					   opacity:1
+					}
+				 },
+				 marker:{
+					enabled:true,
+					symbol:'triangle',
+					radius:5
+				 },
+				 zones:[
+					{
+					   value:85,
+					   color:'black'
+					},
+					{
+					   color:'red'
+					}
+				 ],
+				 tooltip:{
+					pointFormat:'<br/><span style="color:red;font-weight:bold;">Not met clinical criteria</span><br/>'
+				 }
+			  },			  
+			  {
+				//3
+				name:'Not met clinical criteria SBP',
+				lineWidth:0,
+				data:arrflagNotMet,
+				showInLegend:true,
+				events:{
+					  legendItemClick:function(){
+						 return false;
+					  }
+				   },
+				   color:'black',
+				   enableMouseTracking:true,
+				   onSeries:'seriesSbp',
+				   marker:{
+					  enabled:true,
+					  symbol:'triangle',
+					  radius:5
+				   },
+				   zones:[
+					  {
+						 value:135,
+						 color:'black'
+					  },
+					  {
+						 color:'red'
+					  }
+				   ],
+				   states:{
+					  hover:{
+						 lineWidthPlus:0
+					  },
+					  inactive:{
+						 opacity:1
+					  }
+				   },
+				   tooltip:{
+					  pointFormat:''
+				   }
+				},
+				{
+				   //4
+				   name:'Met clinical criteria',
+				   lineWidth:0,
+				   data:arrflagDBP,
+				   showInLegend:true,
+				   events:{
+					  legendItemClick:function(){
+						 return false;
+					  }
+				   },
+				   enableMouseTracking:true,
+				   onSeries:'dbp',
+				   color:'red',
+				   states:{
+					  hover:{
+						 lineWidthPlus:0
+					  },
+					  inactive:{
+						 opacity:1
+					  }
+				   },
+				   marker:{
+					  enabled:true,
+					  symbol:'circle',
+					  radius:3
+				   },
+				   zones:[
+					  {
+						 value:85,
+						 color:'black'
+					  },
+					  {
+						 color:'red'
+					  }
+				   ],
+				   tooltip:{
+					  pointFormat:'<br/><span style="color:black;font-weight:bold;">Met clinical criteria</span><br/>'
+				   }
+				},
+				{
+				   //5
+				   name:'Met clinical criteria SBP',
+				   lineWidth:0,
+				   data:arrflag,
+				   showInLegend:true,
+				   events:{
+					  legendItemClick:function(){
+						 return false;
+					  }
+				   },
+				   color:'black',
+				   enableMouseTracking:true,
+				   onSeries:'seriesSbp',
+				   marker:{
+					  enabled:true,
+					  symbol:'circle',
+					  radius:3
+				   },
+				   zones:[
+					  {
+						 value:135,
+						 color:'black'
+					  },
+					  {
+						 color:'red'
+					  }
+				   ],
+				   states:{
+					  hover:{
+						 lineWidthPlus:0
+					  },
+					  inactive:{
+						 opacity:1
+					  }
+				   },
+				   tooltip:{
+					  pointFormat:''
+				   }
+				},
+				{
+				   //6
+					type:'line',
+				   lineWidth:1,
+				   name:'Heart Rate',
+				   dashStyle:'Dot',
+				   data:heartrate,
+				   id:'HeartRate',
+				   marker:{
+					  enabled:true,
+					  radius:3,
+					  symbol:'circle'
+				   },
+				   yAxis:1,
+				   color:'grey',
+				   showInLegend:true,
+				   events:{
+					  legendItemClick:function(){
+						 return false;
+					  }
+				   },
+				   tooltip:{
+					  valueSuffix:' bpm',
+
+				   },
+				   states:{
+					  hover:{
+						 lineWidthPlus:1
+					  }
+				   }
+				},			  
+				 //my test 
+				/*{
+					data:[
+						{
+						   x:1554608328136,
+						   y:99,
+						   title:" ",
+						   text:" "
+						},
+						{
+						   x:1567489128136,
+						   y:94,
+						   title:" ",
+						   text:" "
+						}
+					],
+					lineWidth:0,
+					linkedTo:'akv',
+					marker:{
+						radius:10,
+						lineColor:'red',
+						fillColor:'transparent',
+						lineWidth:1,
+						symbol:'circle'
+					}
+				}*/
+		]
+	}
+	xchart = Highcharts.chart('container1', options1); 
+	 
+    </script>
+</html>
