@@ -1,3 +1,4 @@
+//Plot band on x axis (can also use Plot lines)
 Highcharts.chart('container', {
     xAxis: {
         plotBands: [{ // mark the weekend
@@ -26,7 +27,7 @@ Highcharts.chart('container', {
 
 
 //________________________________________________________________________________
-//https://jsfiddle.net/yowL86h9/1/
+//https://jsfiddle.net/yowL86h9/1/  (polygon on specific area)
 
 Highcharts.chart('container', {
     series: [{
@@ -48,6 +49,39 @@ Highcharts.chart('container', {
     }]
 
 
+});
+
+//__________________________________________________________
+//Plot line on x axis
+Highcharts.chart('container', {
+    xAxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+
+        plotLines: [{
+            color: '#FF0000',
+            width: 2,
+            value: 0
+        },
+        {
+            color: 'green',
+            width: 2,
+            value: 4
+        },
+        {
+            color: '#000',
+            width: 2,
+            value: 8
+        },
+        {
+            color: 'blue',
+            width: 2,
+            value: 11
+        }]
+    },
+
+    series: [{
+        data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+    }]
 });
 
 _______________________________________________________________________________________
