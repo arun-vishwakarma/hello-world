@@ -11,6 +11,16 @@
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <script src="https://code.highcharts.com/modules/annotations.js"></script>
+		<style>
+		.highcharts-yaxis-labels text:nth-child(11) {
+			color: white !important;
+			fill: white !important;
+		}
+		.highcharts-yaxis-labels text:nth-child(12) {
+			color: white !important;
+			fill: white !important;
+		}
+		</style>
     </head>
     <body>
         <div id="container1" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
@@ -392,7 +402,7 @@
 				 tickInterval:20,
 				 min:40,
 				 gridLineColor:'transparent',
-				 max:220,
+				 max:260,
 				 title:{
 					text:''
 				 },
@@ -427,6 +437,18 @@
 					   color:'lightgrey',
 					   width:1,					   
 					   value:220,  //it will be max y axis value (left side)
+					   /*label:{
+						  text:'SBP threshhold (200)',
+						  align:'center',
+						  style:{
+							 color:'gray'
+						  }
+					   }*/
+					},
+					{
+					   color:'lightgrey',
+					   width:1,					   
+					   value:260,  //it will be max y axis value (left side)
 					   /*label:{
 						  text:'SBP threshhold (200)',
 						  align:'center',
