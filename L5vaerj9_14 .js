@@ -56,7 +56,7 @@ Highcharts.chart('container', {
 Highcharts.chart('container', {
     xAxis: {
         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
+        //jan -> 0, Feb ->1, .........Dec->11  use for value
         plotLines: [{
             color: '#FF0000',
             width: 2,
