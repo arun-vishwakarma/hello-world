@@ -1,0 +1,745 @@
+
+<div id="weekly-avg-tootip" *ngIf="showWeeklyAvgTootipLabel && isGraphShow ">
+  Weekly <!-- <i _ngcontent-utt-c1="" aria-hidden="true" class="fa fa-info-circle"></i> -->
+  <button type="button" class="btn btn-secondary" [ngbPopover]="popContent2" placement="bottom" class="infoRight">
+    <i class="fa fa-info-circle" aria-hidden="true"></i> </button>
+    <br/> Average <br/> SBP/DBP
+</div>
+
+
+
+
+<div [ngStyle]="{'display': isLoaderOn == true ? 'block' : 'none' }"  class="loaderArea">
+    <div class="spinner-border text-loader"></div>
+  </div>
+<div class="container-fluid">
+    <!-- header section -->
+   <app-header></app-header>   
+    <!-- left pannel section -->
+    <aside id="ama-leftPannel" class="{{leftPannelChange}}">
+      <div class="leftTopNavagation">
+        <div id="nav-icon1" title="Menu" class="{{expandClass}}" [attr.expand]="false" (click)="expandCollaps()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- <a href="index.html" class="leftMenuExpand" data-toggle="tooltip" data-placement="bottom" title="Home page">
+          <i class="fa fa-home"></i>
+        </a> -->
+      </div>
+      <div class="ama-leftTab" id="patient-list">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a
+              class="nav-item nav-link active"
+              id="nav-myPatients"
+              data-toggle="tab"
+              [routerLink]="'/portal/landing'"
+              role="tab"
+              aria-controls="nav-home"
+              aria-selected="true"
+              >Enrolled Patient List</a
+            >
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="myPatients" role="tabpanel" aria-labelledby="nav-home-tab">
+            
+            <div class="gridTable searchListPatient">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Date of Birth</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr
+                  [routerLink]="'/portal/patient'"
+                  *ngFor="let data of patients | paginate: config; let i = index"
+                  (click)="selectPatient(data)" [ngClass]="{'currentPatient': mrn==data.patientMRN}">
+                  <td>{{ data.patientLastName ? data.patientLastName : 'N/A' }}</td>
+                  <td>{{ data.patientFirstName ?  data.patientFirstName : 'N/A'}}</td>
+                  <td>{{ data.patientDOB ? data.patientDOB.split(' ')[0] : 'N/A' }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <app-custom-pagination
+            [config]="config"
+            (pageChange)="config.currentPage = $event"
+          ></app-custom-pagination>
+
+
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- right pannel section -->
+    <form class="form-signin" [formGroup]="filterForm">
+    <div class="row">
+      
+      <div class="{{bodyWrapClass}}">
+
+        <div class="row mainBody">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="patientDetais">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p>
+                        <!-- Peterson, James &nbsp;|&nbsp; MRN: {{mrn}} &nbsp;|&nbsp; {{age}}yrs M &nbsp;|&nbsp; DOB: {{birthdate}} -->
+                        {{lname}}, {{fname}} &nbsp;|&nbsp; MRN: {{mrn}} &nbsp;|&nbsp; {{age}}yrs M &nbsp;|&nbsp; DOB: {{birthdate}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="{{subHeaderClass}}">
+                <div class="{{subHeaderContent}}">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="patientDetails">
+                        <div class="inch">64"</div>
+                        <div class="heartRate">80</div>
+                        <div class="bpInfo">
+                          <span>135</span>
+                          <span>80</span>
+                          <sup>mmHg</sup>
+                        </div>
+                        <div class="ibsInfo">140.0 lb</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p><b>BP:</b> 135/80 mmHg</p>
+                          <p><b>HR:</b> 80 bmp</p>
+                          <p><b>BMI:</b> 20.5</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <p><b>Primary Insurance:</b> Sinma Life Care</p>
+                      <p><b>Phone Number:</b> (646)-392-4387</p>
+                      <p><b>Language:</b> English</p>
+                    </div>
+                  </div>
+                </div>
+                <div [attr.subHeaderExpand]="false" (click)="subHeaderToggleAction();" class="{{subHeaderToggle}}" data-toggle="tooltip" data-placement="bottom" title="Additional information">
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="ama-tableSection">
+              <div class="filterTrends">
+                <ul>
+                    <!-- <li class="font-weight-bold">{{minDate | date: 'MMMM d': timezoneConstant}} - <br />{{maxDate | date: 'MMMM d': timezoneConstant}} ({{dateRange}} Days)</li> -->
+                    <li class="font-weight-bold">{{minDate | date: 'MMMM d': timezoneConstant}} - <br />{{maxDate | date: 'MMMM d': timezoneConstant}} </li>
+                                   
+                </ul>
+              </div>
+
+              <ul class="nav nav-tabs moniTab" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    (click)="showTable();"
+                    class="{{tableButtonClass}}"
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="javascript:void(0)"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="false"
+                    title="Table View"
+                  >
+                    <span class="iLign"><i class="fa fa-table"></i></span
+                  ></a>
+                </li>
+                <li class="nav-item">
+                  <a #graphRef
+                  (click)="showGraph();"
+                    class="{{graphButtonClass}}"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="javascript:void(0)"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                    title="Graph View"
+                  >
+                    <span><i class="fa fa-area-chart"></i></span
+                  ></a>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="myTabContent" [ngClass]="{'graph-tab': isGraphShow == true}">
+                  <div [ngStyle]="{'display': isGraphShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="graph-view" role="tabpanel" aria-labelledby="profile-tab">
+                    
+                    <div id="container" style="border:1px solid black;"></div>
+                  </div>
+                <div [ngStyle]="{'display': isTableShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="table-view" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="table-responsive gridTable">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col" width="10%">Date</th>
+                              <th scope="col" width="10%">Day</th>
+                              <th scope="col" width="10%">Time</th>
+                              <th scope="col" width="10%">SBP / DBP</th>
+                              <th scope="col" width="10%">Heart Rate</th>
+                              <th scope="col" width="15%" class="text-center" >Weekly Average SBP / DBP </th>
+                              <th class="text-center" scope="col" width="15%">Comment</th>
+                              <th scope="col" width="10%">Device</th>
+                            </tr>
+                          </thead>
+                          <tbody >
+                            <tr *ngFor="let data of bpColumnRangeData;index as i">
+                              <td>{{data['timeInMilliSeconds'] | date: 'yyyy-MM-dd': timezoneConstant}}</td>
+                              <td>{{data['timeInMilliSeconds'] | date: 'EEE': timezoneConstant}}</td>
+            
+                              <td *ngIf="data['sbpValue'] == null || data['sbpValue'] == '' "></td>
+                              <td *ngIf="data['sbpValue']  != null &&  data['sbpValue']  != '' && (validity =='All' || (validity == 'Y' && data['isValid'] == 'Y'))">
+                                {{data['timeInMilliSeconds'] | date: 'HH:mm' : timezoneConstant}} 
+                              </td>
+                              <td *ngIf="data['sbpValue']  != null &&  data['sbpValue']  != '' && ((validity == 'Y' && data['isValid'] != 'Y'))">
+                                 ---
+                                </td>
+                             
+                            <!-- ({{data['timeZone']}}) -->
+                              <td *ngIf="data['sbpValue'] == null || data['sbpValue'] == '' ">---</td>
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'All' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                                  <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value ? 'red' : 'black' }">{{data['sbpValue']}}</span>
+                                  <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value && data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }"> / </span>
+                                  <span [ngStyle]="{'color':data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }">{{data['dbpValue']}}</span>
+                              </td>
+            
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'Y' && data['isValid'] == 'N' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                              ---	
+                              </td>
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'Y' && data['isValid'] == 'Y' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                                <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value ? 'red' : 'black' }">{{data['sbpValue']}}</span>
+                                <span [ngStyle]="{'color':data['sbpValue'] >= goal_sbp_value && data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }"> / </span>
+                                <span [ngStyle]="{'color':data['dbpValue'] >= goal_dbp_value ? 'red' : 'black' }">{{data['dbpValue']}}</span>
+                              </td>
+            
+            
+                              <td *ngIf="data['sbpValue'] == null || data['sbpValue'] == '' ">---</td>
+                              <td *ngIf="validity == 'All' && data['sbpValue']  != null &&  data['sbpValue']  != '' ">{{data['heartRate']}}</td>
+                              <td  [ngStyle]="{'background-color':data['isValid'] == 'Y' ? '#e2e3e5' : '#fff' }"  *ngIf="validity == 'Y' && data['isValid'] == 'N' && data['sbpValue']  != null &&  data['sbpValue']  != '' " class="trinfo1">
+                                ---
+                              </td>
+            
+                              <td *ngIf="validity == 'Y' && data['isValid'] == 'Y' && data['sbpValue']  != null &&  data['sbpValue']  != '' ">{{data['heartRate']}}</td>
+                              
+                              <!-- <td *ngIf="data['rowspan']" [attr.rowspan]="data['rowspan']" [ngStyle]="{'background-color':data['Average'] != 'Inadequate data' && validity == 'Y' ? '#e2e3e5' : '#fff' }"  style="background:#fff; vertical-align:middle;" class="text-center"> -->
+                                <td *ngIf="data['rowspan']" [attr.rowspan]="data['rowspan']" [ngStyle]="{'background-color':data['ihmiStrict'] == 'Y' ? '#e2e3e5' : '#fff' }"  style="background:#fff; vertical-align:middle;" class="text-center">		
+                                <h3 *ngIf="data['Average'] != 'Inadequate data'">
+                                    <span [ngStyle]="{'color':data['AverageSBP'] >= goal_sbp_value ? 'red' : 'black' }">{{data['AverageSBP']}}</span>
+                                    <span [ngStyle]="{'color':data['AverageSBP'] >= goal_sbp_value && data['AverageDBP'] >= goal_dbp_value ? 'red' : 'black' }"> / </span>
+                                    <span [ngStyle]="{'color':data['AverageDBP'] >= goal_dbp_value ? 'red' : 'black' }">{{data['AverageDBP']}}</span>
+                                </h3>
+            
+                                <h3 *ngIf="data['Average'] == 'Inadequate data'">
+                                    
+                                    <span>Inadequate Data For Average</span>
+                                    <!-- <span>Not enough data to calculate average</span> -->
+                                </h3>
+                              </td>
+                              <!--<td [attr.rowspan]="0" style="background:#fff; vertical-align:middle;" class="text-center"> <h3>{{data['simpleAverage']}} / {{data['ihmiAverage']}}</h3></td>-->
+                              <td align="center"><span style="display:none" id="patientComment{{i}}">{{data['patientComments']}}</span>
+                                <!-- <a *ngIf="data['patientComments']!='' && data['patientComments'] !=null"  id="{{i}}" ngbPopover="{{data['patientComments']}}" triggers="mouseenter:mouseleave" (click)="showComment(i);" [className] = "" href="javascript:void(0)" data-toggle="popover" title="" data-content="Some content inside the popover"><img src="./assets/images/icon_Comments.png" /></a> -->
+                                <a *ngIf="data['patientComments']!='' && data['patientComments'] !=null && (validity =='All' || (validity == 'Y' && data['isValid'] == 'Y'))"  id="{{i}}"  (click)="showComment(i);"  [className] = "" href="javascript:void(0)" data-toggle="popover"  data-content="Some content inside the popover"><img src="./assets/images/icon_Comments.png" /></a>
+                                <a *ngIf="(data['patientComments']!='' && data['patientComments'] !=null && ((validity == 'Y' && data['isValid'] != 'Y')))"  id="{{i}}"  [className] = "" href="javascript:void(0)" data-toggle="popover"  data-content="Some content inside the popover"></a>
+                                &nbsp;&nbsp;&nbsp;
+                                
+                              </td>
+                              <td>                                
+                                <a title="Validated Device List" *ngIf="data['isValidDevice']== 'Y' && data['device'] && (validity =='All' || (validity == 'Y' && data['isValid'] == 'Y'))" (click)="showVDL(i);" [className] = "" href="javascript:void(0)"><img src="./assets/images/icon_bp_machine.png" /></a>
+                                <a title="Validated Device List" *ngIf="(data['isValidDevice']== 'Y' && data['device'] && ((validity == 'Y' && data['isValid'] != 'Y')))"  [className] = "" href="javascript:void(0)"></a>
+                              
+                                <span style="display:none" id="model{{i}}">{{data.device?.model}}</span>
+                                <span style="display:none" id="manufacturer{{i}}">{{data.device?.manufacturer}}</span>
+                              </td>
+                            </tr>
+                            
+                             
+                          </tbody>
+                        </table>
+                    </div>
+
+                  <ul class="tableInfoLegend">
+                    <li><i class="info1"></i> Met Clinical Profile</li>
+                  </ul>
+                </div>
+                <div class="tab-pane fade" id="graph-view" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="graph-area">
+                    <img src="assets/images/graph-img.png" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
+        
+      </div>
+    
+    </div>
+
+    <div class="fourTiles">
+      <div class="row" data-poptab="false">
+
+        <div class="ama-BorderArea">
+        <div class="allGroupRight">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Filters</h2>
+              </div>
+              <div class="col-md-12">
+
+                <div class="filterSection row">
+                  <div class="form-inline">
+                    <div class="form-group">
+                      <label class="col-md-4">Display:</label>
+                      <div class="col-md-8">
+                          <select class="form-control" formControlName="date_range" #date_range id="exampleFormControlSelect1" (change)="setDateRange(date_range.value);">
+                              <option value="7">7 Days</option>
+                              <option value="30" selected>30 Days</option>
+                              <option value="60">60 Days</option>
+                              <option value="90">90 Days</option>
+                            </select>
+                      </div>
+                    </div>
+                    <div class="goalBP">
+
+                        <div class="form-inline">
+  
+                            <label class="col-md-4">Goal BP:</label>
+  
+                            <div class="col-md-8">
+  
+                              <div class="form-inline goalBPlist">                       
+  
+                                <div class="inputArea">
+  
+                                  <div class="input-group spinner">
+  
+                                      <input style="color: red;background-color: #fff;" readonly type="text" formControlName="goal_sbp" class="form-control" #goalsbp  value="{{goal_sbp_value}}">
+  
+                                    <div class="input-group-btn-vertical">
+  
+                                        <button (click)="increaseSbpGoal(goalsbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                        <button (click)="decreaseSbpGoal(goalsbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+  
+                                    </div>
+  
+                                  </div>
+  
+                                </div>
+  
+                                <div class="slash">
+  
+                                  /
+  
+                                </div>
+  
+                                <div class="inputArea">
+  
+                                  <div class="input-group spinner">
+  
+                                      <input style="color: red;background-color: #fff;" readonly type="text" formControlName="goal_dbp" class="form-control red" #goaldbp  value="{{goal_dbp_value}}">
+  
+                                    <div class="input-group-btn-vertical">
+  
+                                        <button (click)="increaseDbpGoal(goaldbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                        <button (click)="decreaseDbpGoal(goaldbp.value)" class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+  
+                                    </div>
+  
+                                  </div>
+  
+                                </div>
+  
+                              </div>
+  
+                            </div> 
+  
+                          </div>
+  
+                      </div>                     
+
+                    
+                  </div>
+                </div>
+                <div class="filterRadio">
+
+                    <div class="custom-controls-stacked">
+                        <label class="custom-control custom-radio">
+                            <input  formControlName="clinical_criteria" type="radio" class="custom-control-input" checked="checked" value="1" (click)="setClinicalCriteria('All');">
+                          <span class="custom-control-label">View All </span> 
+                          <span>({{observationAllCount}}) </span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                          <input formControlName="clinical_criteria" type="radio" class="custom-control-input" value="2" (click)="setClinicalCriteria('Y');">
+                          <span class="custom-control-label">Met Clinical Profile </span>
+                          <span>({{observationMetCount}})</span>                          
+                        </label>
+                        <div class="infoposition">
+                            <ng-template #popContent>
+                              <h3>Met Clinical Profile</h3>
+                              <div>The patient has reported that the BP measurement was performed using an automated device under the following circumstances:
+
+                                <ul>
+                                  <li>At rest</li>
+                                  <li>While seated</li>
+                                  <li>Measured at the left of right upper arm</li>
+                                  <li>Size of the cuff used</li>
+                                </ul>
+                                  
+                              </div>
+                            </ng-template>                         
+                            <button type="button" class="btn btn-secondary" [ngbPopover]="popContent" placement="bottom" class="infoRight"><i class="fa fa-info-circle" aria-hidden="true"></i> </button>
+                        </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="allGroupRight">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Weekly Average SBP / DBP
+                <div class="infoposition">
+                    <ng-template #popContent2>
+                      <h3>Weekly Average</h3>
+                      <p></p>
+                      <br/><br/>
+                      <h3>Inadequate Data For Average</h3>
+                      <p></p>
+                      <br/><br/>
+                    </ng-template>                         
+                    <button type="button" class="btn btn-secondary" [ngbPopover]="popContent2" placement="bottom" class="infoRight"><i class="fa fa-info-circle" aria-hidden="true"></i> </button>
+                </div>
+              </h2>
+
+              </div>
+              <div class="ama-weeklyArea">
+                <div class="col-md-12" *ngFor="let tiles of tilesArr;index as i">
+                  <div class="{{tiles.class_name}}">
+
+
+
+                    <div class="row">
+                      <div class="col-lg-6 col-sm-7">
+                          <!-- <span *ngIf="tiles.inadequate_data == 'N' ">SBP</span> -->
+                          <!-- <span *ngIf="tiles.inadequate_data == 'N' " class="{{tiles.sbp_class_name}}">{{tiles.sbp}}</span> -->
+                          <span class="smallViewData" *ngIf="tiles.inadequate_data == 'Y' ">Inadequate Data For Average</span>
+                          <div class="notAvail" *ngIf="tiles.inadequate_data == 'NA' ">Not Available</div>
+                          <!-- <span *ngIf="tiles.inadequate_data == 'N' "></span> -->
+                          <div *ngIf="tiles.inadequate_data == 'N' " class="weekTop">
+                            <span><span class="{{tiles.sbp_class_name}}">{{tiles.sbp}}</span> / <span class="{{tiles.dbp_class_name}}">{{tiles.dbp}}</span></span>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-5">
+                          <span *ngIf="tiles.deviceLength && tiles.isValidDevice == 'Y' && tiles.inadequate_data != 'NA' && tiles.inadequate_data != 'Y'">
+                            <a title="Validated Device List" (click)="showTilesVDL(i);" [className] = "" href="javascript:void(0)">
+                              <img src="assets/images/icon_bp_machine.png" alt=""/>
+                            </a>
+                          </span>
+                          <div class="week">{{tiles.start_date | date: 'MMM d'}} - <span>{{tiles.end_date | date: 'MMM d'}}</span></div>
+                      </div>
+                    </div>                   
+                  
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>         
+        
+        <div class="billingGroup" >
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Billing  (Last 30 Days) 
+                <div class="infoposition billing-tooltip-top">
+                    <ng-template #popContent3>
+                      <div class="billing-tooltip">
+                        <h3>Last Bill Date</h3>
+                        <p>Date that the reimbursement request was submitted using CPT® 99474.</p>
+                      
+                        <h3>Device(s)</h3>
+                        <p>Known manufacturer(s) and model number(s) of BP device(s) used.</p>
+                       
+                        <h3>Readings Reviewed</h3>
+                        <p>To meet billing requirements, appropriately timed BP readings occur in pairs of measurements 1 to 5 minutes apart, at least 4 hours apart, and twice a day. A minimum of 12 readings (3 days’ worth) must occur over the 30 day period to meet the minimum.</p>
+                       
+                        <h3> Average BP Reviewed</h3>
+                        <div>
+                          At least one average BP must be reviewed in order to submit for reimbursement. The average shown here is according to the following hierarchy:
+                          <ul>
+                            <li>Weekly average BP that meets clinical profile;</li>
+                            <li>Weekly average BP that does not meet clinical profile but meets timing requirements as per weekly average documentation;</li>
+                            <li>Average BP of readings as per the minimum number of readings timing requirements.</li>
+                          </ul>
+                          </div>
+                        
+                    </div>
+                    </ng-template>                    
+                    <button type="button" class="btn btn-secondary" [ngbPopover]="popContent3" placement="left" class="infoRight"><i class="fa fa-info-circle" aria-hidden="true"></i> </button>
+                </div>
+              </h2>
+            </div>
+
+            <div class="col-md-12" id="content" #content>
+             
+                <div class="billingUl mt-0">
+                  <ul>
+                    <li>
+                      <b>Last Bill Date :</b>
+                    </li>
+                    <li>
+                      {{billingInfo.lastBilledDate }}
+                    </li>
+                    <li>
+                      <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.lastBilledDateFlag == true,'fa-times-circle colorCancel': billingInfo.lastBilledDateFlag == false}" aria-hidden="true"></i>
+                    </li>
+                  </ul>
+                </div>
+  
+                <div class="billingUl">
+                  <ul>
+                    <li>
+                      <b>Device(s) :</b>
+                    </li>
+                    <li>
+                      <a *ngIf="billingInfo.countDevices" title="Device(s) Used" (click)="showDevicesUsed();" [className] = "" href="javascript:void(0)">
+                        <img src="assets/images/icon_bp_machine.png" alt=""/>
+                      </a>
+                      <span *ngIf="!billingInfo.countDevices">Unknown Device</span>
+                    </li>
+                    <li>
+                      <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.countDevices > 0,'fa-times-circle colorCancel': billingInfo.countDevices == 0}" aria-hidden="true"></i>
+                    </li>
+                  </ul>
+                </div>
+  
+                <div class="billingUl">
+                  <ul>
+                    <li>
+                      <b>Readings Reviewed&nbsp;:</b>
+                      <b> (Minimum 12)</b>
+                    </li>
+                    <li>
+                      {{billingInfo.countOfObservationReviewed}}
+                    </li>
+                    <li>
+                        <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.countOfObservationReviewed >= 12,'fa-times-circle colorCancel': billingInfo.countOfObservationReviewed < 12}" aria-hidden="true"></i>
+                    </li>
+                  </ul>
+                </div>
+  
+                <div class="billingUl">
+                  <ul>
+                    <li>
+                      <b>Average BP Reviewed :</b>
+                    </li>
+                    <li>
+                      {{billingInfo.billingAverage}}
+                    </li>
+                    <li>
+                      <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.billingAverageFlag == true,'fa-times-circle colorCancel': billingInfo.billingAverageFlag == false}" aria-hidden="true"></i>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="billingUl2">
+                    <ul>
+                      <li><input #cpu type ="checkbox"/>
+                        <!-- <input #cpu type ="checkbox" [checked]="billingInfo.isCarePlanUpdated=='Y'"/> -->
+                        <b> Care Plan Updated</b>
+                      </li>
+
+                      <li><input #cpc type ="checkbox"/>
+                        <!-- <input #cpc type ="checkbox" [checked]="billingInfo.isCarePlanCommunicated=='Y'"/> -->
+                          <b> Care Plan Communicated</b>
+                        </li>
+                     
+                    </ul>
+                  </div>
+
+                  <a id="review-btn" class="btn btn-sm btn-success pull-right" (click)="reviewComplete();" style="margin-top:18px;color:#fff;cursor:pointer">
+                      Review Complete
+                  </a>
+  
+              </div>
+
+           
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </form>
+
+<!--   <div *ngIf="!observationActualResponse?.observations.length" style="text-align: center;">
+      Data not found!!
+  </div> -->
+  
+  </div>
+
+  
+
+  <app-billing-review *ngIf="showBillingReview" [billingInfo]="billingInfo" (onCloseOrDownloadPdf)='reviewCheckBoxChanged($event)'></app-billing-review>
+
+  <div class="modal patientModal" id="myModal" [style.display]="showComments == true ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideComment()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">{{patientComment}}
+         
+          </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+  
+      <div class="modal patientModal" id="myModal2" [style.display]="showVDLModal == true ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideVDL()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        
+        <div class="modal-body">
+          <table class="table table-bordered popTable">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Manufacturer</th>
+              </tr>						
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{model}}</td>
+                <td>{{manufacturer}}</td>
+              </tr>	
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+  
+      <div class="modal patientModal" id="myModal3" [style.display]="showTilesVDLModal == true ? 'block' : 'none'">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideTilesVDL()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+  
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-bordered popTable">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Manufacturer</th>
+                </tr>						
+              </thead>
+              <tbody>
+                <tr *ngFor="let vdl of arrModel;index as i;">
+                  <td>{{vdl}}</td>
+                  <td>{{arrManufacturer[i]}}</td>
+                </tr>	
+              </tbody>
+            </table>
+          </div>
+  
+            <!-- <b>Model</b>: {{vdl}}
+            <b>Manufacturer</b>: {{arrManufacturer[i]}}<br/> -->
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+
+
+
+      <div class="modal patientModal" id="myModal3" [style.display]="showDevicesUsedModal == true ? 'block' : 'none'">
+          <div class="modal-dialog">
+            <div class="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="closeBtn">
+              <button type="button" class="close" data-dismiss="modal" (click) = "showDevicesUsedModal=false">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+      
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table table-bordered popTable">
+                  <thead>
+                    <tr>
+                      <th>Model</th>
+                      <th>Manufacturer</th>
+                    </tr>						
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let devices of billingInfo.devicesUsedArr;index as i;">
+                      <td>{{devices.model}}</td>
+                      <td>{{devices.manufacturer}}</td>
+                    </tr>	
+                  </tbody>
+                </table>
+              </div>
+      
+                <!-- <b>Model</b>: {{vdl}}
+                <b>Manufacturer</b>: {{arrManufacturer[i]}}<br/> -->
+            </div>
+            
+            <!-- Modal footer -->
+            
+            
+            </div>
+          </div>
+          </div>
+    
+
+
+
