@@ -1,0 +1,20 @@
+<div id="container" #weeklyAvgTootip style="border:1px solid black;"></div>
+
+____________________________
+
+
+ @ViewChild("weeklyAvgTootip", { static: false }) weeklyAvgTootip: ElementRef;
+  addTilesTooltipElement() {
+    const div: HTMLParagraphElement = this.renderer.createElement("div");
+    div.innerHTML =
+      'Weekly \
+    <button type="button" class="btn btn-secondary" [ngbPopover]="popContent2" placement="bottom" class="infoRight">\
+      <i class="fa fa-info-circle" aria-hidden="true"></i> </button>\
+      <br/> Average <br/> SBP/DBP';
+    this.renderer.appendChild(this.weeklyAvgTootip.nativeElement, div);
+    this.renderer.setAttribute(
+      this.weeklyAvgTootip.nativeElement,
+      "id",
+      "weekly-avg-tootip"
+    );
+  }
