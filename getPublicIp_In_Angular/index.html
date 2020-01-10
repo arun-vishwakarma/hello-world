@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Self-measured Blood Pressure App</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+  </head>
+  <body>
+    <app-root></app-root>
+    <script type="application/javascript">
+      var ClientIP = "";
+      function getIP(json) {
+        //document.write("My public IP address is: ", json.ip);
+        ClientIP = json.ip;
+      }
+    </script>
+
+    <script
+      type="application/javascript"
+      src="https://api.ipify.org?format=jsonp&callback=getIP"
+    ></script>
+  </body>
+</html>
