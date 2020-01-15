@@ -1,0 +1,10 @@
+<app-calculator-header></app-calculator-header>
+<app-mdm-breadcrumb *ngIf="activeModule == 'mdm'"></app-mdm-breadcrumb>
+<button routerLink="/calculator/time" routerLinkActive="active-link">
+  Time
+</button>
+|
+<button routerLink="/calculator/mdm" routerLinkActive="active-link">
+  Medical Decision Making
+</button>
+<router-outlet></router-outlet>
