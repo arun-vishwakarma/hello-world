@@ -1,0 +1,242 @@
+{
+  "P": [
+    {
+      "questionName": "Number and Complexity of Problems Addressed",
+      "text": null,
+      "level": "P",
+      "type": "Minimal",
+      "typeCategory": null,
+      "serialNumber": 1,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 1,
+          "optionName": "1 self-limited or minor problem",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    },
+    {
+      "questionName": "Number and Complexity of Problems Addressed",
+      "text": null,
+      "level": "P",
+      "type": "Low",
+      "typeCategory": null,
+      "serialNumber": 2,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 2,
+          "optionName": "2 or more self-limited or minor problems",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 3,
+          "optionName": "1 stable chronic illness",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 4,
+          "optionName": "1 acute, uncomplicated illness or injury",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    },
+    {
+      "questionName": "Number and Complexity of Problems Addressed",
+      "text": null,
+      "level": "P",
+      "type": "Moderate",
+      "typeCategory": null,
+      "serialNumber": 3,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 5,
+          "optionName": "1 or more chronic illnesses with exacerbation, progression, or side effects of treatment",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 6,
+          "optionName": "2 or more stable chronic illnesses",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 7,
+          "optionName": "undiagnosed new problem with uncertain prognosis",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 8,
+          "optionName": "1 acute illness with systemic symptoms",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 9,
+          "optionName": "1 acute complicated injury",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    },
+    {
+      "questionName": "Number and Complexity of Problems Addressed",
+      "text": null,
+      "level": "P",
+      "type": "High",
+      "typeCategory": null,
+      "serialNumber": 4,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 10,
+          "optionName": "1 or more chronic illnesses with severe exacerbation, progression, or side effects of treatment",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 11,
+          "optionName": "1 acute or chronic illness or injury that poses a threat to life or bodily function",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    }
+  ],
+  "D": [
+    {
+      "questionName": "Amount and/or Complexity of Data to be Reviewed and Analyzed",
+      "text": null,
+      "level": "D",
+      "type": "Category-1A",
+      "typeCategory": 1,
+      "serialNumber": 5,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 12,
+          "optionName": "Review of prior external note(s) from each unique source",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 13,
+          "optionName": "Review of the result(s) of each unique test",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 14,
+          "optionName": "Ordering of each unique test",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    },
+    {
+      "questionName": "Amount and/or Complexity of Data to be Reviewed and Analyzed",
+      "text": null,
+      "level": "D",
+      "type": "Category-1B",
+      "typeCategory": 1,
+      "serialNumber": 6,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 15,
+          "optionName": "Assessment requiring an independent historian(s)",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    },
+    {
+      "questionName": "Amount and/or Complexity of Data to be Reviewed and Analyzed",
+      "text": null,
+      "level": "D",
+      "type": "Category-2",
+      "typeCategory": 2,
+      "serialNumber": 7,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 16,
+          "optionName": "Independent interpretation of a tests",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    },
+    {
+      "questionName": "Amount and/or Complexity of Data to be Reviewed and Analyzed",
+      "text": null,
+      "level": "D",
+      "type": "Category-3",
+      "typeCategory": 3,
+      "serialNumber": 8,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 17,
+          "optionName": "Discussion of management or test interpretation",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    }
+  ],
+  "R": [
+    {
+      "questionName": "Risk of Complications and/or Morbidity or Mortality of Patient Management",
+      "text": null,
+      "level": "R",
+      "type": null,
+      "typeCategory": null,
+      "serialNumber": 9,
+      "status": "active",
+      "options": [
+        {
+          "serialNumber": 18,
+          "optionName": "Minimal risk of morbidity from additional diagnostic testing or treatment",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 19,
+          "optionName": "Low risk of morbidity from additional diagnostic testing or treatment",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 20,
+          "optionName": "Moderate risk of morbidity from additional diagnostic testing or treatment",
+          "status": "active",
+          "selected": false
+        },
+        {
+          "serialNumber": 21,
+          "optionName": "High risk of morbidity from additional diagnostic testing or treatment",
+          "status": "active",
+          "selected": false
+        }
+      ],
+      "optionType": "Check box"
+    }
+  ]
+}
