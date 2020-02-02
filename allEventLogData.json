@@ -1,0 +1,1290 @@
+[	
+	{
+      "timeInMilliSeconds": "1561893646000",
+      "sbpValue": "131",
+      "dbpValue": "80",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-30",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561893420000",
+      "sbpValue": "132",
+      "dbpValue": "82",
+      "heartRate": "89",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-30",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561861961000",
+      "sbpValue": "133",
+      "dbpValue": "76",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-30",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561861800000",
+      "sbpValue": "134",
+      "dbpValue": "78",
+      "heartRate": "89",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-30",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561808388000",
+      "sbpValue": "130",
+      "dbpValue": "81",
+      "heartRate": "89",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-29",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561808160000",
+      "sbpValue": "130",
+      "dbpValue": "81",
+      "heartRate": "89",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-29",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561775692000",
+      "sbpValue": "133",
+      "dbpValue": "75",
+      "heartRate": "69",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-29",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561775400000",
+      "sbpValue": "134",
+      "dbpValue": "77",
+      "heartRate": "75",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-29",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561722257000",
+      "sbpValue": "132",
+      "dbpValue": "73",
+      "heartRate": "76",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-28",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561722120000",
+      "sbpValue": "133",
+      "dbpValue": "74",
+      "heartRate": "85",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-28",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561689067000",
+      "sbpValue": "135",
+      "dbpValue": "77",
+      "heartRate": "82",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-28",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561689000000",
+      "sbpValue": "141",
+      "dbpValue": "79",
+      "heartRate": "93",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-28",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561573800000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-27",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1561545891000",
+      "sbpValue": "131",
+      "dbpValue": "76",
+      "heartRate": "85",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-26",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561545660000",
+      "sbpValue": "132",
+      "dbpValue": "77",
+      "heartRate": "90",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-26",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561516385000",
+      "sbpValue": "135",
+      "dbpValue": "79",
+      "heartRate": "88",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-26",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561516200000",
+      "sbpValue": "137",
+      "dbpValue": "85",
+      "heartRate": "95",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-26",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561401000000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-25",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1561314600000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-24",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1561290340000",
+      "sbpValue": "148",
+      "dbpValue": "83",
+      "heartRate": "72",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-23",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561290240000",
+      "sbpValue": "149",
+      "dbpValue": "84",
+      "heartRate": "73",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-23",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561257239000",
+      "sbpValue": "149",
+      "dbpValue": "83",
+      "heartRate": "82",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-23",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561257000000",
+      "sbpValue": "150",
+      "dbpValue": "84",
+      "heartRate": "86",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-23",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561202742000",
+      "sbpValue": "149",
+      "dbpValue": "85",
+      "heartRate": "80",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-22",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561202520000",
+      "sbpValue": "151",
+      "dbpValue": "86",
+      "heartRate": "86",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-22",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561170736000",
+      "sbpValue": "152",
+      "dbpValue": "78",
+      "heartRate": "88",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-22",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561170600000",
+      "sbpValue": "152",
+      "dbpValue": "78",
+      "heartRate": "88",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-22",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561117214000",
+      "sbpValue": "151",
+      "dbpValue": "80",
+      "heartRate": "76",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-21",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561117020000",
+      "sbpValue": "152",
+      "dbpValue": "82",
+      "heartRate": "87",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-21",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561084311000",
+      "sbpValue": "148",
+      "dbpValue": "84",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-21",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1561084200000",
+      "sbpValue": "151",
+      "dbpValue": "90",
+      "heartRate": "79",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-21",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560969000000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-20",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1560942605000",
+      "sbpValue": "149",
+      "dbpValue": "79",
+      "heartRate": "80",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-19",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560942360000",
+      "sbpValue": "150",
+      "dbpValue": "82",
+      "heartRate": "91",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-19",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560911507000",
+      "sbpValue": "152",
+      "dbpValue": "81",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-19",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560911400000",
+      "sbpValue": "154",
+      "dbpValue": "84",
+      "heartRate": "90",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-19",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560796200000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-18",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1560709800000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-17",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1560683044000",
+      "sbpValue": "148",
+      "dbpValue": "85",
+      "heartRate": "70",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-16",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560682800000",
+      "sbpValue": "155",
+      "dbpValue": "88",
+      "heartRate": "74",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-16",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560652405000",
+      "sbpValue": "149",
+      "dbpValue": "79",
+      "heartRate": "76",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-16",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560652200000",
+      "sbpValue": "152",
+      "dbpValue": "84",
+      "heartRate": "79",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-16",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560600128000",
+      "sbpValue": "150",
+      "dbpValue": "79",
+      "heartRate": "75",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-15",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560600000000",
+      "sbpValue": "151",
+      "dbpValue": "85",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-15",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560565949000",
+      "sbpValue": "151",
+      "dbpValue": "83",
+      "heartRate": "70",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-15",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560565800000",
+      "sbpValue": "153",
+      "dbpValue": "88",
+      "heartRate": "71",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-15",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560513655000",
+      "sbpValue": "148",
+      "dbpValue": "81",
+      "heartRate": "93",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-14",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560513480000",
+      "sbpValue": "148",
+      "dbpValue": "81",
+      "heartRate": "93",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-14",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560479593000",
+      "sbpValue": "151",
+      "dbpValue": "81",
+      "heartRate": "71",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-14",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560479400000",
+      "sbpValue": "152",
+      "dbpValue": "82",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-14",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560364200000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-13",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1560338810000",
+      "sbpValue": "149",
+      "dbpValue": "89",
+      "heartRate": "68",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-12",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560338580000",
+      "sbpValue": "149",
+      "dbpValue": "89",
+      "heartRate": "68",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-12",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560306773000",
+      "sbpValue": "148",
+      "dbpValue": "81",
+      "heartRate": "77",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-12",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560306600000",
+      "sbpValue": "149",
+      "dbpValue": "84",
+      "heartRate": "91",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-12",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560191400000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-11",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1560105000000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-10",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1560079018000",
+      "sbpValue": "131",
+      "dbpValue": "77",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-09",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560078840000",
+      "sbpValue": "136",
+      "dbpValue": "81",
+      "heartRate": "83",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-09",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560047605000",
+      "sbpValue": "136",
+      "dbpValue": "81",
+      "heartRate": "70",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-09",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1560047400000",
+      "sbpValue": "140",
+      "dbpValue": "87",
+      "heartRate": "75",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-09",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559993368000",
+      "sbpValue": "142",
+      "dbpValue": "87",
+      "heartRate": "68",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-08",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559993160000",
+      "sbpValue": "142",
+      "dbpValue": "87",
+      "heartRate": "68",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-08",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559961175000",
+      "sbpValue": "142",
+      "dbpValue": "74",
+      "heartRate": "69",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-08",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559961000000",
+      "sbpValue": "147",
+      "dbpValue": "80",
+      "heartRate": "81",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-08",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559907271000",
+      "sbpValue": "140",
+      "dbpValue": "74",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-07",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559907120000",
+      "sbpValue": "143",
+      "dbpValue": "85",
+      "heartRate": "79",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-07",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559874807000",
+      "sbpValue": "135",
+      "dbpValue": "77",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-07",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559874600000",
+      "sbpValue": "145",
+      "dbpValue": "78",
+      "heartRate": "91",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-07",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559759400000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-06",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1559734652000",
+      "sbpValue": "136",
+      "dbpValue": "79",
+      "heartRate": "79",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-05",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559734380000",
+      "sbpValue": "137",
+      "dbpValue": "85",
+      "heartRate": "81",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-05",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559701932000",
+      "sbpValue": "136",
+      "dbpValue": "78",
+      "heartRate": "78",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-05",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559701800000",
+      "sbpValue": "140",
+      "dbpValue": "81",
+      "heartRate": "84",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-05",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559586600000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-04",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1559500200000",
+      "sbpValue": null,
+      "dbpValue": null,
+      "heartRate": null,
+      "isValid": null,
+      "patientComments": "",
+      "date": "2019-06-03",
+      "timeZone": null,
+      "isValidDevice": "N",
+      "device": null
+    },
+    {
+      "timeInMilliSeconds": "1559472977000",
+      "sbpValue": "133",
+      "dbpValue": "77",
+      "heartRate": "69",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-02",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559472840000",
+      "sbpValue": "134",
+      "dbpValue": "78",
+      "heartRate": "75",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-02",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559442784000",
+      "sbpValue": "133",
+      "dbpValue": "77",
+      "heartRate": "70",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-02",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559442600000",
+      "sbpValue": "134",
+      "dbpValue": "80",
+      "heartRate": "74",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-02",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559388850000",
+      "sbpValue": "132",
+      "dbpValue": "83",
+      "heartRate": "69",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-01",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559388660000",
+      "sbpValue": "138",
+      "dbpValue": "87",
+      "heartRate": "72",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-01",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559356341000",
+      "sbpValue": "136",
+      "dbpValue": "79",
+      "heartRate": "70",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-01",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+    {
+      "timeInMilliSeconds": "1559356200000",
+      "sbpValue": "147",
+      "dbpValue": "81",
+      "heartRate": "81",
+      "isValid": "N",
+      "patientComments": "Need Care",
+      "date": "2019-06-01",
+      "timeZone": "EDT",
+      "isValidDevice": "Y",
+      "device": {
+        "model": "BP765CAN-CD6",
+        "manufacturer": "Omron Healthcare, Inc."
+      }
+    },
+	{
+      "simpleAverage": "133/78",
+      "ihmiAverage": "N/A",
+      "startTime": "2019-06-24",
+      "endTime": "2019-06-30",
+      "criteriaMet": "Met Timing Criteria",
+      "isValidDevice": "Y"
+    },
+    {
+      "simpleAverage": "150/83",
+      "ihmiAverage": "N/A",
+      "startTime": "2019-06-17",
+      "endTime": "2019-06-23",
+      "criteriaMet": "Met Timing Criteria",
+      "isValidDevice": "Y"
+    },
+    {
+      "simpleAverage": "150/84",
+      "ihmiAverage": "N/A",
+      "startTime": "2019-06-10",
+      "endTime": "2019-06-16",
+      "criteriaMet": "Met Timing Criteria",
+      "isValidDevice": "Y"
+    },
+    {
+      "simpleAverage": "139/81",
+      "ihmiAverage": "N/A",
+      "startTime": "2019-06-03",
+      "endTime": "2019-06-09",
+      "criteriaMet": "Met Timing Criteria",
+      "isValidDevice": "Y"
+    },
+    {
+      "simpleAverage": "N/A",
+      "ihmiAverage": "N/A",
+      "startTime": "2019-06-01",
+      "endTime": "2019-06-02",
+      "criteriaMet": "Inadequate data",
+      "isValidDevice": "Y"
+    },
+	{
+		"medicationDesc": "lisinopril 10 mg tablet",
+		"frequency": "10mg daily",
+		"effectiveDate": "2019-05-09",
+		"effectiveDateInMilis": 1557340200000,
+		"status": "stopped"
+	  },
+	{
+		"medicationDesc": "lisinopril 10 mg tablet",
+		"frequency": "20mg daily",
+		"effectiveDate": "2019-05-09",
+		"effectiveDateInMilis": 1557340200000,
+		"status": "active"
+	},
+	{
+		"medicationDesc": "lisinopril 10 mg tablet",
+		"frequency": "10mg daily",
+		"effectiveDate": "2019-04-11",
+		"effectiveDateInMilis": 1554921000000,
+		"status": "active"
+	}
+ ]
+ 
+ //need to add type, date (for weekly average & Rx events) key for each data to make iterable, filtering etc
+ //also may need to make extra key as per filtering left side data  (e.g metClinicalProfile, device, averageType, htnStatus)
