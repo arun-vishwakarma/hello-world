@@ -1,0 +1,814 @@
+<div [ngStyle]="{'display': isLoaderOn == true ? 'block' : 'none' }"  class="loaderArea">
+        <div class="spinner-border text-loader"></div>
+      </div>
+       <!--  <div class="demoText">
+          DEMO
+        </div> -->
+        <div class="container-fluid">      
+          <!-- header section -->
+          <app-header></app-header>   
+          
+    
+          <!-- left pannel section -->
+          <aside id="ama-leftPannel" class="{{leftPannelChange}}">
+                <div class="leftTopNavagation">
+                        <div class="leftNavBar">
+                  <div id="nav-icon1" title="Menu" class="{{expandClass}}" [attr.expand]="false" (click)="expandCollaps()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                     </div>
+
+                  <!-- <a href="index.html" class="leftMenuExpand" data-toggle="tooltip" data-placement="bottom" title="Home page">
+                    <i class="fa fa-home"></i>
+                  </a> -->
+                </div>
+                <div class="ama-leftTab" id="patient-list">
+                  <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                      <a
+                        class="nav-item nav-link active"
+                        id="nav-myPatients"
+                        data-toggle="tab"
+                        [routerLink]="'/portal/landing'"
+                        role="tab"
+                        aria-controls="nav-home"
+                        aria-selected="true"
+                        >Enrolled Patient List</a
+                      >
+                    </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="myPatients" role="tabpanel" aria-labelledby="nav-home-tab">
+                      
+                      <div class="gridTable searchListPatient">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Last Name</th>
+                              <th>First Name</th>
+                              <th>Date of Birth</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <tr
+                            [routerLink]="'/portal/patient'"
+                            *ngFor="let data of patients | paginate: config; let i = index"
+                            (click)="selectPatient(data)" [ngClass]="{'currentPatient': mrn==data.patientMRN}">
+                            <td>{{ data.patientLastName ? data.patientLastName : 'N/A' }}</td>
+                            <td>{{ data.patientFirstName ?  data.patientFirstName : 'N/A'}}</td>
+                            <td>{{ data.patientDOB ? data.patientDOB.split(' ')[0] : 'N/A' }}</td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+          
+                      <app-custom-pagination
+                      [config]="config"
+                      (pageChange)="config.currentPage = $event"
+                    ></app-custom-pagination>
+          
+          
+                    </div>
+                  </div>
+                </div>
+              </aside>
+    
+          <!-- right pannel section -->
+          <form class="form-signin" [formGroup]="filterForm">
+            <div class="row">
+            <div class="{{bodyWrapClass}}">
+              <div class="row mainBody">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="patientDetais">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h2>{{lname}}, {{fname}}</h2>
+                            <p>
+                              {{age}} years {{gender}} &nbsp;|&nbsp; DOB: {{birthdate}} &nbsp;|&nbsp; MRN: {{mrn}}  
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ama-tableSection">
+                    <div class="filterBlock">
+                      <div class="dateRangeText">                        
+                          {{minDate | date: 'MMMM d': timezoneConstant}} - {{maxDate | date: 'MMMM d': timezoneConstant}}    
+                    </div>
+
+                      <div class="allFilterSection">
+                        <div class="dateRange">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label>Display</label>
+                                    <select class="form-control" formControlName="date_range" #date_range id="exampleFormControlSelect1" (change)="setDateRange(date_range.value);">
+                                            <option value="7">7 Days</option>
+                                            <option value="30" selected>30 Days</option>
+                                            <option value="60">60 Days</option>
+                                            <option value="90">90 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="goalBp">
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    <label>Goal BP:</label>
+                                    <div class="input-group spinner">
+                                      <div class="input-group-prepend">
+                                        <span (click)="decreaseSbpGoal(goalsbp.value)" class="input-group-text arrowDown"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                      </div>
+                                      <input style="color: red;background-color: #fff;" readonly type="text" formControlName="goal_sbp" class="form-control" #goalsbp  value="{{goal_sbp_value}}">
+                                      <div class="input-group-append">
+                                        <span (click)="increaseSbpGoal(goalsbp.value)" class="input-group-text arrowUp"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                      </div>
+                                    </div>
+                                    <span class="slash">/</span>
+                                    <div class="input-group spinner">
+                                      <div class="input-group-prepend">
+                                        <span (click)="decreaseDbpGoal(goaldbp.value)" class="input-group-text arrowDown"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                      </div>
+                                      <input style="color: red;background-color: #fff;" readonly type="text" formControlName="goal_dbp" class="form-control red" #goaldbp  value="{{goal_dbp_value}}">
+                                      <div class="input-group-append">
+                                        <span (click)="increaseDbpGoal(goaldbp.value)" class="input-group-text arrowUp"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                      </div>
+                                    </div>                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="radioBox">
+                                <div class="custom-control custom-radio custom-control-inline">
+                              
+                                        <input  formControlName="clinical_criteria" type="radio" id="customRadio" class="custom-control-input" checked="checked" value="1" (click)="setClinicalCriteria('All');">
+                                        <label class="custom-control-label" for="customRadio">View All ({{observationAllCount}})</label>
+                                      </div>
+                                      <div class="custom-control custom-radio custom-control-inline metBox">
+                                              <input formControlName="clinical_criteria" type="radio" id="customRadio2" class="custom-control-input" value="2" (click)="setClinicalCriteria('Y');">
+                                        <label class="custom-control-label" for="customRadio2">Met Procedural Criteria ({{observationMetCount}})</label>
+                                      </div>
+
+                            <!-- <div tabindex="0" class="infoposition" data-toggle="popover" data-trigger="focus" data-content="<h3>Met Clinical Profile</h3>
+                              <div>The patient has reported that the BP measurement was performed using an automated device under the following circumstances: 
+                                <ul>
+                                  <li>At rest</li>
+                                  <li>While seated</li>
+                                  <li>Measured at the left of right upper arm</li>
+                                  <li>Size of the cuff used</li>
+                                </ul>
+                              </div>
+                              " data-placement="bottom">
+                              <i aria-hidden="true" class="fa fa-info-circle"></i>
+                            </div> -->
+
+
+                            <div class="infoposition">
+                                    <ng-template #popContent>
+                                      <h3>Met Clinical Profile</h3>
+                                      <div>The patient has reported that the BP measurement was performed using an automated device under the following circumstances:
+        
+                                        <ul>
+                                          <li>At rest</li>
+                                          <li>While seated</li>
+                                          <li>Measured at the left of right upper arm</li>
+                                          <li>Size of the cuff used</li>
+                                        </ul>
+                                          
+                                      </div>
+                                    </ng-template>                         
+                                    <i [ngbPopover]="popContent" placement="bottom" class="fa fa-info-circle" aria-hidden="true"></i>
+                                </div>
+
+
+                        </div>
+                      </div>                  
+                    </div>
+    
+                    <ul class="nav nav-tabs moniTab" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a #graphRef
+                            (click)="showGraph();"
+                              class="{{graphButtonClass}}"
+                              id="profile-tab"
+                              data-toggle="tab"
+                              href="javascript:void(0)"
+                              role="tab"
+                              aria-controls="profile"
+                              aria-selected="false"
+                              title="Graph View"
+                            >
+                          <span><i class="icon-line-chart"></i></span></a>
+                      </li>                      
+
+                      <li class="nav-item">
+                          <a 
+                          (click)="showRx();"
+                            class="{{rxButtonClass}}"
+                            id="rx-tab"
+                            data-toggle="tab"
+                            href="javascript:void(0)"
+                            role="tab"
+                            aria-controls="rx"
+                            aria-selected="false"
+                            title="Medication"
+                          >
+                        <span class="irx"><i class="icon-rx-medication-icon"></i></span></a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a (click)="showTable();"
+                        class="{{tableButtonClass}}"
+                        id="home-tab"
+                        data-toggle="tab"
+                        href="javascript:void(0)"
+                        role="tab"
+                        aria-controls="home"
+                        aria-selected="false"
+                        title="Table View">
+                          <span class="iLign"><i class="icon-list"></i></span></a>
+                      </li>
+                      
+                    </ul>
+                    
+                    <div class="tab-content" id="myTabContent" [ngClass]="{'graph-tab': isGraphShow == true}">
+
+                            <div [ngStyle]="{'display': isGraphShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="graph-view" role="tabpanel" aria-labelledby="profile-tab">
+                                <div id="graph-data">                    
+                                    <div id="container" [ngClass]="{'top-cls': ttTopClass == true}"></div>
+                                    <!-- <div id="weekly-avg-tootip" [ngClass]="{'top-cls': ttTopClass == true}" *ngIf="showWeeklyAvgTootipLabel && isGraphShow">
+                                        Weekly Average SBP/DBP
+                                        <ng-template #popContent2>
+                                          <h3>Weekly Average</h3>
+                                          <p></p>
+                                          <br/><br/>
+                                          <h3>Inadequate Data For Average</h3>
+                                          <p></p>
+                                          <br/><br/>
+                                        </ng-template> 
+                                        <button type="button" class="infoRight" [ngbPopover]="popContent2" placement="left">
+                                          <i class="fa fa-info-circle" aria-hidden="true"></i> </button>
+                                      </div> -->            
+                                </div>
+                            </div>
+
+
+                          
+                          <div [ngStyle]="{'display': isRxShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="rx-view" role="tabpanel" aria-labelledby="rx-tab">
+                            <h3>Current Antihypertensive Medication</h3>
+                            <div class="table-responsive gridTable">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th scope="col" width="25%">Started Date</th>
+                                    <th scope="col" width="50%">Medication</th>
+                                    <th scope="col" width="25%">Frequency</th>
+                                  </tr>
+                                </thead>
+                                <tbody >
+                                  <tr *ngFor="let data of rxDetailsActualResponse;index as i">
+                                    <td>{{data.effectiveDate | date: 'yyyy-MM-dd': timezoneConstant}}</td>
+                                    <td>{{data.medicationDesc}}</td>
+                                    <td>{{data.frequency}}</td>                                    
+                                  </tr>
+                                  
+                                </tbody>
+                              </table>
+                          </div>
+                          </div>
+
+
+
+
+                          <div [ngStyle]="{'display': isTableShow == true ? 'block' : 'none' }" class="tab-pane fade show active" id="table-view" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane fade show active" id="table-view" role="tabpanel" aria-labelledby="home-tab">
+                              <div class="new-list-group">
+                                <div class="list-left">
+                                  <h2><span>Filter Result</span> <a href="javascript:void(0);" (click)="clearInputFilters('all')">Clear all</a></h2>
+                                  <form name="evtlog-filter-frm">
+                                    <div class="filter-section">
+            
+                                      <div class="filter-box" data-page="Date Range">
+                                        <h3><span>Date Range</span> <a href="javascript:void(0);" (click)="clearInputFilters('date')">Clear</a></h3>
+                                        <div class="dateRange">
+                                          <div>
+                                              <div class="input-group">
+                                                <input type="text" readonly (click)="startDate.toggle()" [value]="eventLogFilterOptions.startDate"  name="startDate" [minDate]="eventLogFilterOptions.minDateDefault" [maxDate]="eventLogFilterOptions.maxDate" #sd  [(ngModel)]="eventLogModelStartDate" ngbDatepicker #startDate="ngbDatepicker" (ngModelChange)="inputFilterStartDate($event,sd.value)" class="form-control" placeholder="Start" aria-label="Start" aria-describedby="basic-addon2">
+                                                
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text" (click)="startDate.toggle()" id="basic-addon2"><i class="icon-calendar"></i></span>
+                                                </div>
+                                              </div>
+                                          </div>
+                                          <div class="to">
+                                              to
+                                          </div>
+                                          <div>
+                                              <div class="input-group">
+                                                <input type="text" readonly  (click)="endDate.toggle()" [value]="eventLogFilterOptions.endDate"  name="endDate" [minDate]="eventLogFilterOptions.minDate" [maxDate]="eventLogFilterOptions.maxDate" #ed [(ngModel)]="eventLogModelEndDate" ngbDatepicker #endDate="ngbDatepicker" (ngModelChange)="inputFilterEndDate($event,ed.value)" class="form-control" placeholder="End" aria-label="End" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text" (click)="endDate.toggle()"  id="basic-addon2"><i class="icon-calendar"></i></span>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                      <hr>
+                                      </div>
+            
+                                      <div class="filter-box" data-page="Type">
+                                        <h3><span>Type</span> <a href="javascript:void(0);" (click)="clearInputFilters('type')">Clear</a></h3>
+                                        <ul class="filter-list">
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check1" [checked] = "eventLogFilterOptions.type.includes('BP Observation')" (change)="inputFilterType($event,'BP Observation')">
+                                                <label class="custom-control-label" for="check1">BP Observation</label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check2" [checked] = "eventLogFilterOptions.type.includes('Weekly Average')" (change)="inputFilterType($event,'Weekly Average')">
+                                                <label class="custom-control-label" for="check2">Weekly Average</label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check3" [checked] = "eventLogFilterOptions.type.includes('Hypertension Medications')" (change)="inputFilterType($event,'Hypertension Medications')">
+                                                <label class="custom-control-label" for="check3">Hypertension Medications</label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <hr>
+                                      </div> 
+
+                                      
+                                      <div class="filter-box" data-page="Goal BP">
+                                        <h3><span>Goal BP</span></h3>
+                                        <div class="goal-bp">
+                                          <div class="input-group spinner">
+                                            <div class="name">SBP</div>
+                                            <div class="input-group-prepend">
+                                              <span (click)="decreaseSbpGoal(goalsbp.value)" class="input-group-text arrowDown"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" value="{{goal_sbp_value}}" #goalsbp>
+                                            <div class="input-group-append">
+                                              <span (click)="increaseSbpGoal(goalsbp.value)" class="input-group-text arrowUp"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                            </div>
+                                          </div>
+                                          <span class="slash"></span>
+                                          <div class="input-group spinner">
+                                            <div class="name">DBP</div>
+                                            <div class="input-group-prepend">
+                                              <span (click)="decreaseDbpGoal(goaldbp.value)" class="input-group-text arrowDown"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" value="{{goal_dbp_value}}" #goaldbp>
+                                            <div class="input-group-append">
+                                              <span (click)="increaseDbpGoal(goaldbp.value)"  class="input-group-text arrowUp"><i class="fa fa-play" aria-hidden="true"></i></span>
+                                            </div>
+                                          </div> 
+                                        </div>
+                                        <hr *ngIf="eventLogFilterOptions.type.length">
+                                      </div>
+            
+                                      <div class="filter-box" data-page="Met Clinical Profile Criteria" *ngIf="eventLogFilterOptions.type.length && eventLogFilterOptions.type.includes('BP Observation')">
+                                        <h3><span>Met Clinical Profile Criteria</span> <a href="javascript:void(0);" (click)="clearInputFilters('mcpc')">Clear</a> </h3>
+                                        <ul class="filter-met">
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" [checked]="eventLogFilterOptions.mcpcCheckedYes" class="custom-control-input" id="check4" name="mcpc-true" (change)="inputFilterMCPC($event);">
+                                                <label class="custom-control-label" for="check4">Yes</label>
+                                            </div>
+                                          </li>
+                                          <li class="to">
+                                            or
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" [checked]="eventLogFilterOptions.mcpcCheckedNo" class="custom-control-input" id="check5" name="mcpc-false" (change)="inputFilterMCPC($event);">
+                                                <label class="custom-control-label" for="check5">No</label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <hr *ngIf="eventLogFilterOptions.type.length && (eventLogFilterOptions.type.includes('BP Observation') || eventLogFilterOptions.type.includes('Weekly Average'))">
+                                      </div>           
+                                      
+            
+                                      <div class="filter-box" data-page="Average Type" *ngIf="eventLogFilterOptions.type.length && eventLogFilterOptions.type.includes('Weekly Average')">
+                                        <h3><span>Average Type</span> <a href="javascript:void(0);" (click)="clearInputFilters('criteriaMet')">Clear</a> </h3>
+                                        <ul class="filter-list">
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check7" [checked] = "eventLogFilterOptions.criteriaMet.includes('Met Procedural Criteria')" (change)="inputFilterCriteriaMet($event,'Met Procedural Criteria')">
+                                                <label class="custom-control-label" for="check7">Met Procedural Criteria</label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check8" [checked] = "eventLogFilterOptions.criteriaMet.includes('Met Timing Criteria')" (change)="inputFilterCriteriaMet($event,'Met Timing Criteria')">
+                                                <label class="custom-control-label" for="check8">Met Timing Criteria</label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check9" [checked] = "eventLogFilterOptions.criteriaMet.includes('Met Clinical Criteria')" (change)="inputFilterCriteriaMet($event,'Met Clinical Criteria')">
+                                                <label class="custom-control-label" for="check9">Met Clinical Criteria</label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="check10" [checked] = "eventLogFilterOptions.criteriaMet.includes('Inadequate data')" (change)="inputFilterCriteriaMet($event,'Inadequate data')">
+                                                <label class="custom-control-label" for="check10">Inadequate Data for Average</label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <hr>
+                                      </div>
+
+                                      <div class="filter-box" data-page="Device" *ngIf="eventLogFilterOptions.type.length && (eventLogFilterOptions.type.includes('BP Observation') || eventLogFilterOptions.type.includes('Weekly Average'))">
+                                        <h3><span>Device</span> <a href="javascript:void(0);" (click)="clearInputFilters('device')">Clear</a> </h3>
+                                        <ul class="filter-met">
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" [checked]="eventLogFilterOptions.deviceCheckedKnown" class="custom-control-input" id="check13" name="device-known" (change)="inputFilterDevice($event);">
+                                                <label class="custom-control-label" for="check13">Known</label>
+                                            </div>
+                                          </li>
+                                          <li class="to">
+                                            or
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" [checked]="eventLogFilterOptions.deviceCheckedUnKnown" class="custom-control-input" id="check6" name="device-unknown" (change)="inputFilterDevice($event);">
+                                                <label class="custom-control-label" for="check6">Unknown</label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <hr>
+                                      </div>
+                                      
+                                      <div class="filter-box" data-page="Medication Event" *ngIf="eventLogFilterOptions.type.length && eventLogFilterOptions.type.includes('Hypertension Medications')">
+                                        <h3><span>Medication (HTN) Event</span> <a href="javascript:void(0);" (click)="clearInputFilters('status')">Clear</a> </h3>
+                                        <ul class="filter-list">
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" [checked]="eventLogFilterOptions.statusActive" class="custom-control-input" id="check11" name="status-active" (change)="inputFilterStatus($event);">
+                                                <label class="custom-control-label" for="check11">Started</label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" [checked]="eventLogFilterOptions.statusInActive" class="custom-control-input" id="check12" name="status-inactive" (change)="inputFilterStatus($event);">
+                                                <label class="custom-control-label" for="check12">Discontinued</label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <hr>
+                                      </div>
+
+                                      
+            
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="list-right">
+
+                                    <!-- Filter options breadcum -->
+                                    <div class="breadcum-list" *ngIf="eventLogFilterOptions.type.length">
+                                      <div class="applied">Applied Filters:</div>
+                                      <ul>
+                                        <li *ngFor="let type of eventLogFilterOptions.type">{{type}} <i class="icon-close" aria-hidden="true" (click)="removeInputFilterType(type,true)"></i></li>                                        
+                                      </ul>
+                                    </div>
+                                    <div class="breadcum-list" *ngIf="!eventLogFilterOptions.type.length"><div class="applied">No Filter Applied:</div></div>
+                                    
+                                    
+                                    <div class="table-responsive gridTable">
+                                      <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th width="12%">Date</th>
+                                            <th width="12%">Day</th>
+                                            <th width="12%">Time</th>
+                                            <th width="14%">Type</th>
+                                            <th width="50%">Value</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr *ngFor="let data of eventLogDataList">
+                                            <td>{{data.date}}</td>
+                                            <td>{{data.date | date:'E' }}</td>
+                                            <td>{{ data.timeInMilliSeconds | date: 'mm:ss' : ''}}</td>
+                                            <td>{{data.type}}</td>
+                                            <td class="sbp-row" *ngIf="data.type=='BP Observation'"> <!--<b class="red">145 <b>/</b> 81</b>-->
+                                              <div><span><i class="icon-gauge"></i> SBP / DBP: <b>{{data.sbpValue}} / {{data.dbpValue}}</b></span> <span><i class="icon-pulse"></i> HR: <b>{{data.heartRate}}</b></span></div>
+                                              <p>Met Clinical Profile Criteria: <b>{{data.metClinicalProfileCriteria=='Y' ? 'Yes' : 'No'}}</b></p>
+                                              <p>Device: <b>{{data.isValidDevice=='Y' ? data.device.model : 'Unknown'}}</b></p>
+                                              <p>Comment: <b>{{ data.isValidDevice=='Y' ? data.patientComments : '-'}}</b></p>
+                                            </td>
+                                            <td class="sbp-row" *ngIf="data.type=='Weekly Average'">
+                                              <div><span><i class="icon-gauge"></i> SBP / DBP: <b>121 / 81</b> <small>({{data.startTime}} to {{data.endTime}})</small></span></div>
+                                              <p>Average Type: <b>{{data.criteriaMet}}</b></p>
+                                              <p>Device: <b>Omron 1234ASDF</b></p>
+                                            </td>
+                                            <td class="sbp-row" *ngIf="data.type=='Hypertension Medications'">
+                                              <h3>{{data.medicationDesc}}</h3>
+                                              <p><span [ngClass]="{'status-green': data.status==='active','status-red': data.status!='active'}">{{data.status=='active' ? 'STARTED' : 'DISCONTINUED'}}</span> Frequency: <b>{{data.frequency}}</b></p>
+                                            </td>
+                                          </tr>                         
+                                        </tbody>
+                                      </table>
+                                    </div>                          
+                                </div>                    
+                              </div>                              
+                            </div>
+                          </div>
+
+
+
+                          <div class="tab-pane fade" id="graph-view" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="graph-area">
+                              <img src="assets/images/graph-img.png" alt="" />
+                            </div>
+                          </div>
+                    </div>
+
+              </div>
+            </div>
+            
+            <div class="billingSection">
+
+                <div class="col-md-12">
+    
+                  <div class="billingBox1">
+                    <h2>Billing
+                        <ng-template #popContent3>
+                            <div class="billing-tooltip">
+                              <h3>Last Bill Date</h3>
+                              <p>Date that the reimbursement request was submitted using CPT® 99474.</p>
+                            
+                              <h3>Device(s)</h3>
+                              <p>Known manufacturer(s) and model number(s) of BP device(s) used.</p>
+                              
+                              <h3>Readings Reviewed</h3>
+                              <p>To meet billing requirements, appropriately timed BP readings occur in pairs of measurements 1 to 5 minutes apart, at least 4 hours apart, and twice a day. A minimum of 12 readings (3 days’ worth) must occur over the 30 day period to meet the minimum.</p>
+                              
+                              <h3> Average BP Reviewed</h3>
+                              <div>
+                                At least one average BP must be reviewed in order to submit for reimbursement. The average shown here is according to the following hierarchy:
+                                <ul>
+                                  <li>Weekly average BP that meets clinical profile;</li>
+                                  <li>Weekly average BP that does not meet clinical profile but meets timing requirements as per weekly average documentation;</li>
+                                  <li>Average BP of readings as per the minimum number of readings timing requirements.</li>
+                                </ul>
+                                </div>                                      
+                          </div>
+                          </ng-template>                    
+                          <i [ngbPopover]="popContent3" placement="right" class="fa fa-info-circle" aria-hidden="true"></i>
+    
+                    </h2>
+                    <p>(Last 30 Days)</p>
+    
+                  </div>
+    
+                  <div class="billingBox2">
+    
+                    <div class="table-responsive">
+    
+                      <table class="table table-bordered">
+    
+                        <thead>
+    
+                          <tr>
+    
+                            <th>Last Bill Date</th>
+    
+                            <th>Device(S)</th>
+    
+                            <th>Reading Reviewed (Min. 12)</th>
+    
+                            <th>Average BP Reviewed</th>
+    
+                          </tr>
+    
+                        </thead>
+    
+                        <tbody>
+    
+                          <tr>
+    
+                            <td>{{billingInfo.lastBilledDate }} <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.lastBilledDateFlag == true,'fa-times-circle colorCancel': billingInfo.lastBilledDateFlag == false}" aria-hidden="true"></i></td>
+    
+                            <td><a *ngIf="billingInfo.countDevices" title="Device(s) Used" (click)="showDevicesUsed();" [className] = "" href="javascript:void(0)">
+    
+                                                                                                                                                  <img src="assets/images/icon_bp_machine.png" alt=""/><span *ngIf="!billingInfo.countDevices">Unknown Device</span>
+    
+                                                                                                                  </a> <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.countDevices > 0,'fa-times-circle colorCancel': billingInfo.countDevices == 0}" aria-hidden="true"></i></td>
+    
+                            <td>{{billingInfo.countOfObservationReviewed}} <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.countOfObservationReviewed >= 12,'fa-times-circle colorCancel': billingInfo.countOfObservationReviewed < 12}" aria-hidden="true"></i></td>
+    
+                            <td>{{billingInfo.billingAverage}}  <i class="fa" [ngClass]="{'fa-check-circle colorTick': billingInfo.billingAverageFlag == true,'fa-times-circle colorCancel': billingInfo.billingAverageFlag == false}" aria-hidden="true"></i></td>
+    
+                          </tr>
+    
+                        </tbody>
+    
+                      </table>
+    
+                    </div>
+    
+                  </div>
+    
+                  <div class="billingBox3">
+    
+                    <div class="billingCheckbox">    
+    
+                        <div class="custom-control custom-checkbox">    
+                            <input #cpu type ="checkbox" class="custom-control-input" id="defaultUnchecked"/>    
+                            <label class="custom-control-label" for="defaultUnchecked">Care Plan Updated</label>    
+                        </div>
+    
+                        <div class="custom-control custom-checkbox">    
+                            <input #cpc type ="checkbox" class="custom-control-input" id="defaultUnchecked1"/>    
+                            <label class="custom-control-label" for="defaultUnchecked1">Care Plan Communicated</label>    
+                        </div>
+    
+                    </div>
+    
+                    <div class="billingReview">
+    
+                      <button style="float:left;" id="review-btn" type="button" class="btn btn-outline-primary reviewBtn"  (click)="reviewComplete();">Review Complete</button>
+                      <!-- <span #rc_msg></span> -->
+                      
+                    </div>
+    
+                  </div>
+
+                  <div class="billingBox4">
+                      <app-billing-review *ngIf="showBillingReview" [billingInfo]="billingInfo" (onCloseOrDownloadPdf)='reviewCheckBoxChanged($event)'></app-billing-review>
+                  </div> 
+    
+                </div>                          
+    
+              </div>
+                           
+
+          </div>
+
+          
+    
+        </div>
+
+            </div> 
+    
+           </form>
+        
+        </div>
+
+    
+       
+
+
+  <!-- <app-billing-review *ngIf="showBillingReview" [billingInfo]="billingInfo" (onCloseOrDownloadPdf)='reviewCheckBoxChanged($event)'></app-billing-review> -->
+
+  <div class="modal patientModal" id="myModal" [style.display]="showComments == true ? 'block' : 'none'">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideComment()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">{{patientComment}}
+         
+          </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+  
+      <div class="modal patientModal" id="myModal2" [style.display]="showVDLModal == true ? 'block' : 'none'">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideVDL()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        
+        <div class="modal-body">
+          <table class="table table-bordered popTable">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Manufacturer</th>
+              </tr>						
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{model}}</td>
+                <td>{{manufacturer}}</td>
+              </tr>	
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+  
+      <div class="modal patientModal" id="myModal3" [style.display]="showTilesVDLModal == true ? 'block' : 'none'">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="closeBtn">
+          <button type="button" class="close" data-dismiss="modal" (click) = "hideTilesVDL()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+  
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table table-bordered popTable">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Manufacturer</th>
+                </tr>						
+              </thead>
+              <tbody>
+                <tr *ngFor="let vdl of arrModel;index as i;">
+                  <td>{{vdl}}</td>
+                  <td>{{arrManufacturer[i]}}</td>
+                </tr>	
+              </tbody>
+            </table>
+          </div>
+  
+            <!-- <b>Model</b>: {{vdl}}
+            <b>Manufacturer</b>: {{arrManufacturer[i]}}<br/> -->
+        </div>
+        
+        <!-- Modal footer -->
+        
+        
+        </div>
+      </div>
+      </div>
+
+
+
+      <div class="modal patientModal" id="myModal3" [style.display]="showDevicesUsedModal == true ? 'block' : 'none'">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="closeBtn">
+              <button type="button" class="close" data-dismiss="modal" (click) = "showDevicesUsedModal=false">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+      
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table table-bordered popTable">
+                  <thead>
+                    <tr>
+                      <th>Model</th>
+                      <th>Manufacturer</th>
+                    </tr>						
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let devices of billingInfo.devicesUsedArr;index as i;">
+                      <td>{{devices.model}}</td>
+                      <td>{{devices.manufacturer}}</td>
+                    </tr>	
+                  </tbody>
+                </table>
+              </div>
+      
+                <!-- <b>Model</b>: {{vdl}}
+                <b>Manufacturer</b>: {{arrManufacturer[i]}}<br/> -->
+            </div>
+            
+            <!-- Modal footer -->
+            
+            
+            </div>
+          </div>
+          </div>    
+    
+  
